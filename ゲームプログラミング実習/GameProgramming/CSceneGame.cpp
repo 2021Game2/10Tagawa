@@ -14,6 +14,7 @@
 
 #include "CMap.h"
 
+
 CMatrix Matrix;
 
 CSceneGame::~CSceneGame() {
@@ -57,7 +58,7 @@ void CSceneGame::Update() {
 	mPlayer.Update();
 	//“G‚ÌXV
 	mEnemy.Update();
-
+	//‹@—‹
 	//Õ“Ëˆ—
 	CCollisionManager::Get()->Collision();
 
@@ -88,6 +89,8 @@ void CSceneGame::Update() {
 	if (CKey::Push('J')) {
 		Matrix = Matrix * CMatrix().RotateY(-1);
 	}
+	
+	//Camera.mPosition = mPlayer.mPosition + ;
 
 	//s—ñİ’è
 	glMultMatrixf(Matrix.mF);
@@ -97,6 +100,8 @@ void CSceneGame::Update() {
 	mPlayer.Render();
 	//“G•`‰æ
 	mEnemy.Render();
+
+	mMap.Render();
 
 	//ƒRƒ‰ƒCƒ_‚Ì•`‰æ
 	CCollisionManager::Get()->Render();

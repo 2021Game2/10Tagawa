@@ -3,12 +3,16 @@
 #include "CScene.h"
 #include "CXPlayer.h"
 #include "CXEnemy.h"
+#include "CMap.h"
+#include "CCamera.h"
 
 /*
 ゲームのシーン
 */
 class CSceneGame : public CScene {
 public:
+	CMap mMap;
+
 	//キャラクタのインスタンス
 	CXPlayer mPlayer;
 	//敵のインスタンス

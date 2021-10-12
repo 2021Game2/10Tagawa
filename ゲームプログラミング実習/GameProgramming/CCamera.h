@@ -1,11 +1,14 @@
 #ifndef CCAMERA_H
 #define CCAMERA_H
 #include "CVector.h"
+
 /*
 カメラクラス
 */
 class CCamera {
 public:
+
+	CVector mPosition;
 	//視点
 	CVector mEye;
 	//注視点

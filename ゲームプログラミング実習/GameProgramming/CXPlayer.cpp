@@ -49,9 +49,10 @@ void CXPlayer::Update()
 		{
 			mRotation.mY -= 2.0f;
 		}
-		if (CKey::Push(' '))
+		if (CKey::Push('S'))
 		{
-			ChangeAnimation(3, true, 30);
+			ChangeAnimation(1, true, 60);
+			mPosition += CVector(0.0f, 0.0f, -0.1f) * mMatrixRotate;
 		}
 		else if (CKey::Push('W'))
 		{
@@ -61,6 +62,6 @@ void CXPlayer::Update()
 		else {
 			ChangeAnimation(0, true, 60);
 		}
-	}
+	}	
 	CXCharacter::Update();
 }

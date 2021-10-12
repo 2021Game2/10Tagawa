@@ -4,6 +4,7 @@
 #include "main.h"
 #include "CSceneManager.h"
 #include "glut.h"
+#include "CInput.h"
 bool InitFlg = true;
 
 //シーンマネージャのインスタンス
@@ -86,6 +87,9 @@ int main(void)
 		glfwTerminate();
 		return -1;
 	}
+
+	//ウィンドウポインタ変数の設定
+	CInput::Init(window);
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);

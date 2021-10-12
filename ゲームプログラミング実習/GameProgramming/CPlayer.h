@@ -21,6 +21,13 @@ public:
 	CColliderLine mLine; //線分コライダ
 	CColliderLine mLine2;
 	CColliderLine mLine3;
+
+	float mFx, mFy, mFz;
+	float x, y;
+
+	//前回のマウス座標
+	int mMx, mMy;
+
 	//デフォルトコンストラクタ
 	CPlayer();
 //	CBullet bullet;

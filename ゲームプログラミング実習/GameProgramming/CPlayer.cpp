@@ -12,10 +12,19 @@
 #include "CUtil.h"
 //
 #include "CEffect.h"
+//
+#include <math.h>
+//
+#include "CInput.h"
 
 CPlayer *CPlayer::spThis = 0;
 
 #define FIRECOUNT 15	//発射間隔
+
+#define MOS_POS_X 400	//マウス座標のX補正
+#define MOS_POS_Y 300	//マウス座標のY補正
+#define MOUSE_X_LIM 1024	//マウスX座標の範囲
+#define MOUSE_Y_LIM 768		//マウスY座標の範囲
 
 CPlayer::CPlayer()
 : mLine(this, &mMatrix, CVector(0.0f, 0.0f, -14.0f), CVector(0.0f, 0.0f, 17.0f))
@@ -28,10 +37,14 @@ CPlayer::CPlayer()
 	spThis = this;
 	//テクスチャファイルの読み込み（1行64列）
 	mText.LoadTexture("FontWhite.tga", 1, 64);
+	//マウスカーソル座標の取得
+	
+
 }
 
 //更新処理
-void CPlayer::Update() {
+void CPlayer::Update() 
+{
 	//Aキー入力で回転
 	if (CKey::Push('A')) {
 		//Y軸の回転値を増加
@@ -72,6 +85,106 @@ void CPlayer::Update() {
 		bullet->Update();
 //		TaskManager.Add(bullet);
 	}
+	//マウスカーソル座標の取得
+	CInput::GetMousePosD(&mMx, &mMy);
+
+	int mx, my;//マウスカーソル座標取得用
+		//マウスカーソル座標の取得
+		CInput::GetMousePos(&mx, &my);
+
+		//マウスクリック検出
+		if (CKey::Push(VK_LBUTTON))
+		{
+			//マウス座標コンソール出力
+			printf("%d,%d\n", mx, my);
+		}
+
+		//ゲーム画面中心からの座標へ変換する
+		mx -= MOS_POS_X;
+		my = MOS_POS_Y - my;
+
+		//プレイヤーとマウス座標との差を求める
+		mx -= x;
+		my -= y;
+
+		//距離が遠いほうへ移動させる
+		if (abs(mx) > abs(my))
+		{
+			//X軸で移動
+			if (mx < 0)
+			{
+				//左へ移動
+				x -= 3;
+				mFx = -1;
+				mFy = 0;
+			}
+			else
+			{
+				//右へ移動
+				x += 3;
+				mFx = 1;
+				mFy = 0;
+			}
+		}
+
+		else
+		{
+			//Y軸で移動
+			if (my < 0)
+			{
+				//下へ移動
+				y -= 3;
+				mFx = 0;
+				mFy = -1;
+			}
+			else
+			{
+				//上へ移動
+				y += 3;
+				mFx = 0;
+				mFy = 1;
+			}
+		}
+
+		//X軸方向の移動
+//前回より右にあれば右へ移動
+		if (mMx < mx)
+		{
+			x += mx - mMx;
+		}
+		else if (mMx > mx)
+		{
+			x += mx - mMx;
+		}
+
+		//Y軸方向の移動
+		//前回より下にあれば下へ移動
+		if (mMy < my)
+		{
+			y -= my - mMy;
+		}
+		else if (mMy > my)
+		{
+			y -= my - mMy;
+		}
+
+		//左右の範囲をでると反対端へ移動させる
+		if (my > MOUSE_Y_LIM)
+		{
+			my = 1;
+		}
+		else if (my <= 0)
+		{
+			my = MOUSE_Y_LIM - 1;
+		}
+
+		//座標を退避する
+		mMx = mx;
+		mMy = my;
+
+		//マウスカーソル座標の更新
+		CInput::SetMousePosD(mx, my);
+
 
 	//CTransformの更新
 	CTransform::Update();

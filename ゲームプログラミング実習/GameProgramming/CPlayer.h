@@ -18,6 +18,7 @@ public:
 	CCollider mCollider;
 	CText mText;
 	static CPlayer *spThis;
+	static int PlayerPos;
 	CColliderLine mLine; //ü•ªƒRƒ‰ƒCƒ_
 	CColliderLine mLine2;
 	CColliderLine mLine3;

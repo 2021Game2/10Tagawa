@@ -1,5 +1,20 @@
-﻿  CSceneGame.cpp
-C:\Users\himaw\OneDrive\デスクトップ\ゲーム制作Ⅲ\10Tagawa\ゲームプログラミング実習\GameProgramming\CModelX.h(225,1): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-C:\Users\himaw\OneDrive\デスクトップ\ゲーム制作Ⅲ\10Tagawa\ゲームプログラミング実習\GameProgramming\CModelX.h(16): message : 'CMaterial' の宣言を確認してください
-LINK : warning LNK4098: defaultlib 'LIBCMT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
-  GameProgramming.vcxproj -> C:\Users\himaw\OneDrive\デスクトップ\ゲーム制作Ⅲ\10Tagawa\ゲームプログラミング実習\Debug\GameProgramming.exe
+﻿  CBillBoard.cpp
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CModelX.h(225,1): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CModelX.h(16): message : 'CMaterial' の宣言を確認してください
+  CCamera.cpp
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CModelX.h(225,1): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CModelX.h(16): message : 'CMaterial' の宣言を確認してください
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CCamera.cpp(24,41): error C2677: 二項演算子 '+': 型 'CPlayer' を扱うグローバルな演算子が見つかりません (または変換できません) (新しい動作; ヘルプを参照)。
+  CEnemy2.cpp
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CModelX.h(225,1): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CModelX.h(16): message : 'CMaterial' の宣言を確認してください
+  CPlayer.cpp
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CModelX.h(225,1): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CModelX.h(16): message : 'CMaterial' の宣言を確認してください
+  CSceneGame.cpp
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CModelX.h(225,1): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CModelX.h(16): message : 'CMaterial' の宣言を確認してください
+  CSceneManager.cpp
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CModelX.h(225,1): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CModelX.h(16): message : 'CMaterial' の宣言を確認してください
+  コードを生成中...

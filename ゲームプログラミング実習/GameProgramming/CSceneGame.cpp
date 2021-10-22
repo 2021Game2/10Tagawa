@@ -14,7 +14,6 @@
 
 #include "CMap.h"
 
-
 CMatrix Matrix;
 
 CSceneGame::~CSceneGame() {
@@ -65,7 +64,7 @@ void CSceneGame::Update() {
 	//カメラのパラメータを作成する
 	CVector e, c, u;//視点、注視点、上方向
 	//視点を求める
-	e = CVector(1.0f, 2.0f, 10.0f);
+	e = CVector(1.0f, 3.0f, 10.0f);
 	//注視点を求める
 	c = CVector();
 	//上方向を求める
@@ -90,11 +89,12 @@ void CSceneGame::Update() {
 		Matrix = Matrix * CMatrix().RotateY(-1);
 	}
 	
-	//Camera.mPosition = mPlayer.mPosition + ;
+	
+	
 
 	//行列設定
 	glMultMatrixf(Matrix.mF);
-
+	
 	//モデル描画
 //	CRes::sModelX.Render();
 	mPlayer.Render();

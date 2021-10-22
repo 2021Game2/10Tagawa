@@ -20,26 +20,28 @@
 CPlayer *CPlayer::spThis = 0;
 
 #define FIRECOUNT 15	//発射間隔
+#define PLAYERPOS 100
 
 #define MOS_POS_X 400	//マウス座標のX補正
 #define MOS_POS_Y 300	//マウス座標のY補正
 #define MOUSE_X_LIM 1024	//マウスX座標の範囲
 #define MOUSE_Y_LIM 768		//マウスY座標の範囲
 
+int CPlayer::PlayerPos;
+
 CPlayer::CPlayer()
-: mLine(this, &mMatrix, CVector(0.0f, 0.0f, -14.0f), CVector(0.0f, 0.0f, 17.0f))
-, mLine2(this, &mMatrix, CVector(0.0f, 5.0f, -8.0f), CVector(0.0f, -3.0f, -8.0f))
-, mLine3(this, &mMatrix, CVector(9.0f, 0.0f, -8.0f), CVector(-9.0f, 0.0f, -8.0f))
-, mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
-, mFireCount(0)
+	: mLine(this, &mMatrix, CVector(0.0f, 0.0f, -14.0f), CVector(0.0f, 0.0f, 17.0f))
+	, mLine2(this, &mMatrix, CVector(0.0f, 5.0f, -8.0f), CVector(0.0f, -3.0f, -8.0f))
+	, mLine3(this, &mMatrix, CVector(9.0f, 0.0f, -8.0f), CVector(-9.0f, 0.0f, -8.0f))
+	, mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
+	, mFireCount(0)
 {
 	mTag = EPLAYER;	//タグの設定
 	spThis = this;
 	//テクスチャファイルの読み込み（1行64列）
 	mText.LoadTexture("FontWhite.tga", 1, 64);
 	//マウスカーソル座標の取得
-	
-
+	PlayerPos = PLAYERPOS;
 }
 
 //更新処理
@@ -76,13 +78,9 @@ void CPlayer::Update()
 	}
 
 	//スペースキー入力で弾発射
-	if (CKey::Push(VK_SPACE) && mFireCount == 0) {
-		mFireCount = FIRECOUNT;
-		CBullet *bullet = new CBullet();
-		bullet->Set(0.1f, 1.5f);
-		bullet->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
-		bullet->mRotation = mRotation;
-		bullet->Update();
+	if (CKey::Push(VK_SPACE) && mFireCount <= 0) 
+	{
+
 //		TaskManager.Add(bullet);
 	}
 	//マウスカーソル座標の取得

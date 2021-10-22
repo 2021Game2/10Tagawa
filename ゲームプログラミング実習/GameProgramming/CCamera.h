@@ -8,19 +8,26 @@
 class CCamera {
 public:
 
-	CVector mPosition;
 	//視点
 	CVector mEye;
+
 	//注視点
 	CVector mCenter;
+
 	//上方向
 	CVector mUp;
+
 	//カメラの設定
 	//Set(視点, 注視点, 上方向)
 	void Set(const CVector &eye, const CVector &center,
 		const CVector &up);
+
+	static int CameraPos;
+	static CCamera* spThis;
+
 	//カメラ適用
 	void Render();
+	void Update();
 };
 
 //カメラの外部参照

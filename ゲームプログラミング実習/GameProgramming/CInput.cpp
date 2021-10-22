@@ -3,8 +3,7 @@
 
 GLFWwindow* CInput::mpWindow = nullptr;
 
-void CInput::Init(GLFWwindow* w) 
-{
+void CInput::Init(GLFWwindow* w) {
 	mpWindow = w;
 }
 

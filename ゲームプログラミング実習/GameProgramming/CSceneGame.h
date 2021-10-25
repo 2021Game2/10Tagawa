@@ -3,15 +3,21 @@
 #include "CScene.h"
 #include "CXPlayer.h"
 #include "CXEnemy.h"
+#include "CBillBoard.h"
+#include "CBillBoard2.h"
+#include "CSound.h"
 #include "CMap.h"
-#include "CCamera.h"
 
 /*
 ゲームのシーン
 */
 class CSceneGame : public CScene {
+	CSound mJump;
+//	CBillBoard mBillBoard;
 public:
+	//マップのインスタンス
 	CMap mMap;
+
 
 	//キャラクタのインスタンス
 	CXPlayer mPlayer;
@@ -23,6 +29,8 @@ public:
 	void Init();
 	//更新処理のオーバーライド
 	void Update();
+	//描画処理
+	void Render();
 
 };
 

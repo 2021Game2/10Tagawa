@@ -25,3 +25,6 @@ void CSceneManager::Update() {
 	//ƒ|ƒCƒ“ƒ^‚ÌUpdate‚ğŒÄ‚Ô
 	mpScene->Update();
 }
+void CSceneManager::Render() {
+	mpScene->Render();
+}

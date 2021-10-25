@@ -59,6 +59,11 @@ CVector CVector::Cross(const CVector &v) {
 CVector CVector::operator*(const float &f) {
 	return CVector(mX * f, mY * f, mZ * f);
 }
+CVector CVector::operator/(const float& f) {
+//	float div = 1.0f / f;
+	return CVector(mX / f, mY / f, mZ / f);
+//	return operator*(div);
+}
 //+演算しのオーバーロード
 //CVector + CVector の演算結果を返す
 CVector CVector::operator+(const CVector &v)
@@ -71,4 +76,10 @@ void CVector::operator+=(const CVector& v)
 	mX += v.mX;
 	mY += v.mY;
 	mZ += v.mZ;
+}
+void CVector::operator-=(const CVector& v)
+{
+	mX -= v.mX;
+	mY -= v.mY;
+	mZ -= v.mZ;
 }

@@ -1,14 +1,16 @@
 #include <Windows.h>
 #include "glew.h"
-#include "GLFW/glfw3.h"
 #include "main.h"
 #include "CSceneManager.h"
 #include "glut.h"
 #include "CInput.h"
+#include <stdio.h>
 bool InitFlg = true;
 
 //シーンマネージャのインスタンス
 CSceneManager SceneManager;
+
+
 
 /* display関数
 1秒間に60回実行される
@@ -27,6 +29,7 @@ void display() {
 	}
 	else {
 		SceneManager.Update();
+		SceneManager.Render();
 	}
 
 }
@@ -80,6 +83,8 @@ int main(void)
 	if (!glfwInit())
 		return -1;
 
+
+
 	/* Create a windowed mode window and its OpenGL context */
 	window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Hello World", NULL, NULL);
 	if (!window)
@@ -88,12 +93,11 @@ int main(void)
 		return -1;
 	}
 
-	//ウィンドウポインタ変数の設定
-	CInput::Init(window);
-
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
 
+	//入力クラスの初期化
+	CInput::Init(window);
 
 	glClearColor(0.7f, 0.7f, 0.7f, 1.0f);
 
@@ -125,6 +129,8 @@ int main(void)
 
 	glEnable(GL_NORMALIZE);
 
+	//終了処理を登録
+	atexit(glfwTerminate);
 	//メッシュシェーダー用
 //	CLight::getLight(0)->setDir(CVector3(0, -1, 1).GetNormalize());
 //	CLight::getLight(0)->setColor(CVector3(0.9f, 0.9f, 0.9f), CVector3(1.0f, 1.0f, 1.0f));
@@ -142,6 +148,6 @@ int main(void)
 		glfwPollEvents();
 	}
 
-	glfwTerminate();
+//	glfwTerminate();
 	return 0;
 }

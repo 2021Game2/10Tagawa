@@ -3,12 +3,11 @@
 
 #include "CCharacter.h"
 
-class CMap :public CCharacter {
+class CMap : public CCharacter
+{
 	CModel mModel;
-
 public:
 	CMap();
 };
-
 
 #endif

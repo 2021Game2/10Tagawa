@@ -2,37 +2,61 @@
 #define CINPUT_H
 
 #include "GLFW/glfw3.h"
+/*
+入力クラス
+CInput
+*/
+
 class CInput {
-	//ウインドゥポインタ
+	//ウィンドウポインタ
 	static GLFWwindow* mpWindow;
+	static int sm_wheel;
+
 public:
+
 	/*
 	初期化
-	Init(ウインドウポインタ)
+	Init(ウィンドウポインタ)
 	*/
 	static void Init(GLFWwindow* w);
 	/*
-	GetMousePos(X座標ポインタ、Y座標ポインタ)
-	ウィンドウの左上を原点とした
-	マウスカーソルの座標を、因数に設定する
+	マウスカーソルの座標を取得する
+	GetMousePos(X座標ポインタ,Y座標ポインタ)
+	ディスプレイの左上が原点(0,0)
 	*/
 	static void GetMousePos(int* px, int* py);
 	/*
-	マウスカーソルの座標を取得する
-	GetMousePos(Ｘ座標ポインタ、Ｙ座標ポインタ)
-	ディスプレイの左上を原点(0,0)とした、
-	マウスカーソルの座標を引数に設定する
-	画面右下方向がX軸プラス
-	画面左下がY軸プラス
+	マウスボタンの状態
+	GetMouseButton(ボタン)
+	ボタン1
+	GLFW_MOUSE_BUTTON_LEFT(左ボタン)
+	GLFW_MOUSE_BUTTON_RIGHT(右ボタン)
+	return;
+	true:押されている
+	false:押されていない
 	*/
-	static void GetMousePosD(int* px, int* py);
-
+	static bool GetMouseButton(int button);
 	/*
 	マウスカーソルの座標を設定する
-	SetCursorPosD(X座標、Y座標)
+	SetCursorPos(X座標,Y座標)
 	ディスプレイの左上が原点(0,0)
 	*/
-	static void SetMousePosD(int x, int y);
+	static void SetMousePos(int x, int y);
 
+	/*
+	マウスカーソルの座標を取得する
+	GetMousePosW(X座標ポインタ,Y座標ポインタ)
+	ウィンドウの左上が原点(0,0)
+	*/
+	static void GetMousePosW(int* px, int* py);
+
+	static void MouseScrollCB(GLFWwindow* window, double x, double y);
+
+	//マウスホイールの移動量を返す
+	static int GetWheelValue();
+
+	//コールバック系の数値をﾘｾｯﾄ
+	static void InputReset();
 };
+
 #endif

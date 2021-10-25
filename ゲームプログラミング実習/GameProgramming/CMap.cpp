@@ -1,5 +1,4 @@
 #include "CMap.h"
-#include "CVector.h"
 
 CMap::CMap()
 {

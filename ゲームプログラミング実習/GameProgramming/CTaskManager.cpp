@@ -1,4 +1,5 @@
 #include "CTaskManager.h"
+#include <cstddef>
 
 //タスクマネージャの外部変数
 //CTaskManager TaskManager;
@@ -32,13 +33,20 @@ void CTaskManager::Add(CTask *addTask)
 	//mHeadの次から検索
 	CTask *task = mHead.mpNext;
 
-	//優先度の大きい順に挿入する
-	//挿入位置の検索（優先度が同じか大きくなった前）
-	//mPriority>=0のこと
-	while(addTask->mPriority < task->mPriority)
+	////優先度の大きい順に挿入する
+	////挿入位置の検索（優先度が同じか大きくなった前）
+	////mPriority>=0のこと
+	//while(addTask->mPriority < task->mPriority)
+	//{
+	//	task = task->mpNext; //次へ
+	//}
+
+	//Priorityの数字が高いほど後へ行くように修正
+	while((task->mpNext!=NULL) && addTask->mPriority > task->mPriority)
 	{
 		task = task->mpNext; //次へ
 	}
+
 
 	//addTaskの次をtask
 	addTask->mpNext = task;
@@ -54,10 +62,19 @@ void CTaskManager::Update() {
 	//先頭から最後まで繰り返し
 	CTask *task = mHead.mpNext;
 	while (task->mpNext) {
+		CTask* del = task;
+
 		//更新処理を呼ぶ
 		task->Update();
 		//次へ
 		task = task->mpNext;
+
+
+		//mEnabledがfalseなら削除
+		if (del->mEnabled == false) {
+			delete del;
+		}
+
 	}
 }
 //描画
@@ -71,6 +88,17 @@ void CTaskManager::Render() {
 		task = task->mpNext;
 	}
 }
+void CTaskManager::Render2D() {
+	//先頭から最後まで繰り返し
+	CTask* task = mHead.mpNext;
+	while (task->mpNext) {
+		//描画処理を呼ぶ
+		task->Render2D();
+		//次へ
+		task = task->mpNext;
+	}
+}
+
 //リストから削除
 //Remove(タスクのポインタ)
 void CTaskManager::Remove(CTask *task) {

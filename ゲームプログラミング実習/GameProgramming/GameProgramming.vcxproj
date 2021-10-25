@@ -43,7 +43,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\himaw\OneDrive\デスクトップ\3Dプログラミング応用\ゲームプログラミング実習2021_vs2019\GameProgramming\include;$(IncludePath)</IncludePath>
+    <IncludePath>include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

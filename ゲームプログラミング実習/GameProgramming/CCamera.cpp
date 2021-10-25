@@ -4,6 +4,8 @@
 
 #define CAMERAPOS 100
 
+glGetFloatv(GL_MODELVIEW_MATRIX);
+
 //ƒJƒƒ‰‚ÌŠO•”•Ï”
 CCamera Camera;
 
@@ -22,6 +24,7 @@ void CCamera::Set(const CVector &eye, const CVector &center,
 
 void CCamera::Update() {
 	CCamera::spThis->CameraPos = CameraPos + PlayerPos;
+
 
 }
 

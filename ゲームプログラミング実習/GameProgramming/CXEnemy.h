@@ -9,16 +9,10 @@ class CXEnemy : public CXCharacter
 {
 	CText mFont;
 
-;
 
-	CCollider mColSphereSword0;	//Œ•
-	CCollider mColSphereSword1;	//Œ•
-	CCollider mColSphereSword2;	//Œ•
 public:
 	//ƒRƒ‰ƒCƒ_‚ÌéŒ¾
-	CCollider mColSphereBody;	//‘Ì
 	CCollider mColSphereHead;	//“ª
-//	CCollider mColSphereSword;	//Œ•
 
 	CXEnemy();
 	/*

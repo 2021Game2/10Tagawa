@@ -10,11 +10,9 @@
 CXPlayer::CXPlayer()
 	: mColSphereBody(this, nullptr, CVector(), 0.5f)
 	, mColSphereHead(this, nullptr, CVector(0.0f, 5.0f, -3.0f), 0.5f)
-	, mColSphereSword(this, nullptr, CVector(-10.0f, 10.0f, 50.0f), 0.3f)
 {
 	//タグにプレイヤーを設定します
 	mTag = EPLAYER;
-	mColSphereSword.mTag = CCollider::ESWORD;
 }
 
 void CXPlayer::Init(CModelX* model)
@@ -24,8 +22,6 @@ void CXPlayer::Init(CModelX* model)
 	mColSphereBody.mpMatrix = &mpCombinedMatrix[9];
 	//頭
 	mColSphereHead.mpMatrix = &mpCombinedMatrix[12];
-	//剣
-	mColSphereSword.mpMatrix = &mpCombinedMatrix[22];
 
 	mRotation.mY = 0.01f;
 }

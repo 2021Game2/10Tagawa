@@ -13,9 +13,16 @@
 //
 #include "CEffect.h"
 
+#include "CCharacter.h"
+
+#include "CEnemy.h"
+
+
 CPlayer *CPlayer::spThis = 0;
 
 #define FIRECOUNT 15	//”­ŽËŠÔŠu
+#define HP 10	//‘Ï‹v’l
+
 
 CPlayer::CPlayer()
 : mLine(this, &mMatrix, CVector(0.0f, 0.0f, -14.0f), CVector(0.0f, 0.0f, 17.0f))
@@ -23,6 +30,8 @@ CPlayer::CPlayer()
 , mLine3(this, &mMatrix, CVector(9.0f, 0.0f, -8.0f), CVector(-9.0f, 0.0f, -8.0f))
 , mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
 , mFireCount(0)
+, mHp(HP)
+
 {
 	mTag = EPLAYER;	//ƒ^ƒO‚ÌÝ’è
 	spThis = this;
@@ -107,6 +116,11 @@ void CPlayer::Collision(CCollider *m, CCollider *o) {
 			}
 		}
 		break;
+	}
+
+	if (o->mpParent->mTag == EENEAT)
+	{
+		mHp -= 10;
 	}
 }
 //Õ“Ëˆ—

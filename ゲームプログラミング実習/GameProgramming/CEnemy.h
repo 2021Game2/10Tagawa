@@ -12,15 +12,16 @@ class CEnemy : public CCharacter {
 public:
 	static int sCount;	//インスタンス数
 	int mHp;	//ヒットポイント
+	int mAttack;	//攻撃フラグ
+	int mAttackLag;		//攻撃フラグが立った後の攻撃開始までのラグ
 
 	//コライダ
 	CCollider mCollider1;
-	CCollider mCollider2;
-	CCollider mCollider3;
 
 	//コンストラクタ
 	//CEnemy(モデル, 位置, 回転, 拡縮)
 	CEnemy(CModel *model, CVector position, CVector rotation, CVector scale);
+
 	//更新処理
 	void Update();
 	////確認用メソッド　削除予定

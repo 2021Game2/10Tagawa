@@ -12,6 +12,8 @@
 //
 #include "CCollisionManager.h"
 
+#include"CEnemy.h"
+
 //CMatrix Matrix;
 
 CSceneGame::~CSceneGame() {
@@ -42,6 +44,10 @@ void CSceneGame::Init() {
 
 	//キャラクターにモデルを設定
 	mPlayer.Init(&CRes::sModelX);
+
+	mModel.Load("sphere.obj","sphere.mtl");
+	new CEnemy(&mModel, CVector(-7, 3, 0), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CEnemy(&mModel, CVector(-7, 6, 10), CVector(0, 0, 0), CVector(1, 1, 1));
 
 	//敵の初期設定
 	mEnemy.Init(&CRes::sKnight);

@@ -6,6 +6,7 @@
 #include "CModel.h"
 //
 #include "CTask.h"
+
 //コライダクラスの宣言
 class CCollider;
 
@@ -21,7 +22,7 @@ public:
 		EPLAYER,	//プレイヤー
 		EENEMY,		//敵
 		EBULLETPLAYER,	//プレイヤー弾
-		EBULLETENEMY,	//敵弾
+		EENEAT,	//敵攻撃
 	};
 	ETag mTag;
 	CModel *mpModel; //モデルのポインタ

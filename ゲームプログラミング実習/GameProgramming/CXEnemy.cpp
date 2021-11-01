@@ -2,8 +2,13 @@
 #include "main.h"
 #include "CCamera.h"
 #include "CUtil.h"
+
+int CXEnemy::mCount;
+
 CXEnemy::CXEnemy()
-	:mColSphereHead(this, nullptr, CVector(0.0f, 1.f, 0.0f), 1.5f)
+	:mColSphereHead(this, nullptr, CVector(0.0f, 1.f, 0.0f), 5.0f)
+	, mCflag(false)
+
 {
 	mFont.LoadTexture("FontG.png", 1, 4096 / 64);
 
@@ -56,13 +61,16 @@ void CXEnemy::Collision(CCollider* m, CCollider* o)
 		{
 			if (o->mpParent->mTag == EPLAYER)
 			{
-				if (o->mTag == CCollider::ESWORD)
+				if (CCollider::Collision(m, o))
 				{
-					if (CCollider::Collision(m, o))
-					{
-						//30フレームかけてダウンし、繰り返さない
-						ChangeAnimation(11, false, 30);
-					}
+					////攻撃フラグが立つ
+					//mAttack == true;
+					//mAttackLag--;
+					//if (mAttack == true && mAttackLag == 0) {
+
+
+					//}
+					//return;
 				}
 			}
 		}

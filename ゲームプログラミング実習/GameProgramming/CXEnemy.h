@@ -15,6 +15,10 @@ public:
 	CCollider mColSphereHead;	//頭
 
 	CXEnemy();
+	static int mCount;			//攻撃までのラグ
+	bool mCflag;	//フラグ(falseなら可能,trueなら不可)
+
+
 	/*
 	初期化(Xモデルクラスのポインタ)
 	*/

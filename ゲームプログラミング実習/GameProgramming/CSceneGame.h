@@ -7,7 +7,7 @@
 #include "CBillBoard2.h"
 #include "CSound.h"
 #include "CMap.h"
-
+#include "CModel.h"
 /*
 ゲームのシーン
 */
@@ -18,7 +18,7 @@ public:
 	//マップのインスタンス
 	CMap mMap;
 
-
+	CModel mModel;
 	//キャラクタのインスタンス
 	CXPlayer mPlayer;
 	//敵のインスタンス

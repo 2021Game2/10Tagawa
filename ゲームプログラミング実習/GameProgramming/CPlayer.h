@@ -14,7 +14,7 @@
 */
 class CPlayer : public CCharacter {
 public:
-	int mFireCount;
+	int mCount;
 	int mHp;	//ヒットポイント
 
 	CCollider mCollider;

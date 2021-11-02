@@ -1,23 +1,6 @@
-﻿  CBillBoard.cpp
-  CBillboard2.cpp
-  CBullet.cpp
-  CCharacter.cpp
-  CCollider.cpp
-  CColliderLine.cpp
-  CColliderMesh.cpp
-  CColliderTriangle.cpp
-  CCollisionManager.cpp
-  CEffect.cpp
-  CEnemy.cpp
-C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CEnemy.cpp(76,16): warning C4805: '==': 演算中の 'int' 型と 'bool' 型の混用は安全ではありません
-C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CEnemy.cpp(76,13): warning C4553: '==': 式の結果が使用されていません。'=' を意図していますか?
-  CEnemy2.cpp
-  CMap.cpp
+﻿  CEnemy.cpp
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CEnemy.cpp(74,16): warning C4805: '==': 演算中の 'int' 型と 'bool' 型の混用は安全ではありません
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CEnemy.cpp(74,13): warning C4553: '==': 式の結果が使用されていません。'=' を意図していますか?
   CPlayer.cpp
-  CSceneGame.cpp
-  CSceneManager.cpp
-  CXCharacter.cpp
-  CXEnemy.cpp
-  CXPlayer.cpp
   コードを生成中...
   GameProgramming.vcxproj -> C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\Debug\GameProgramming.exe

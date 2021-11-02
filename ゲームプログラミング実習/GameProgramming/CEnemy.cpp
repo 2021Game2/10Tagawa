@@ -41,11 +41,9 @@ void CEnemy::Update() {
 	{
 		mHp--;
 		//15フレーム毎にエフェクト
-		if (mHp % 15 == 0)
-		{
+		//if (mHp % 60 == 0)
 			//エフェクト生成
 			new CEffect(mPosition, 1.0f, 1.0f, "exp.tga", 4, 4, 2);
-		}
 		//下降させる
 		mPosition.mY -= 0.03f;
 		CTransform::Update();	//行列更新
@@ -74,15 +72,15 @@ void CEnemy::Collision(CCollider *m, CCollider *o) {
 		//コライダのmとyが衝突しているか判定
 		if (CCollider::Collision(m, o)) {
 				mAttack == true;
-				mAttackLag--;
-				mTag = EENEAT;
-				if (mAttackLag==0) {
-					mAttackLag = true;
-				}
+
 				if (mAttackLag <= 0) {
 					mAttackLag++;
 				}
 				return;
+				if (mAttackLag > -10)
+				{
+					mAttackLag--;
+				}
 		}
 		break;
 	case CCollider::ETRIANGLE: //三角コライダの時

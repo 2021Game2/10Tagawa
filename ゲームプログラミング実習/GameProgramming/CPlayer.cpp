@@ -22,6 +22,8 @@ CPlayer *CPlayer::spThis = 0;
 
 #define FIRECOUNT 15	//発射間隔
 #define HP 10	//耐久値
+#define G -0.1	//重力
+
 
 
 CPlayer::CPlayer()
@@ -29,7 +31,7 @@ CPlayer::CPlayer()
 , mLine2(this, &mMatrix, CVector(0.0f, 5.0f, -8.0f), CVector(0.0f, -3.0f, -8.0f))
 , mLine3(this, &mMatrix, CVector(9.0f, 0.0f, -8.0f), CVector(-9.0f, 0.0f, -8.0f))
 , mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
-, mFireCount(0)
+, mCount(0)
 , mHp(HP)
 
 {
@@ -66,14 +68,14 @@ void CPlayer::Update() {
 		mRotation.mX += 1;
 	}
 
-	if (mFireCount > 0)
+	if (mCount > 0)
 	{
-		mFireCount--;
+		mCount--;
 	}
 
 	//スペースキー入力で弾発射
-	if (CKey::Push(VK_SPACE) && mFireCount == 0) {
-		mFireCount = FIRECOUNT;
+	if (CKey::Push(VK_SPACE) && mCount == 0) {
+		mCount = FIRECOUNT;
 		CBullet *bullet = new CBullet();
 		bullet->Set(0.1f, 1.5f);
 		bullet->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
@@ -111,16 +113,14 @@ void CPlayer::Collision(CCollider *m, CCollider *o) {
 		if (o->mType == CCollider::ESPHERE) {
 			if (CCollider::Collision(m, o))
 			{
-				//エフェクト生成
-				new CEffect(o->mpParent->mPosition, 1.0f, 1.0f, "exp.tga", 4, 4, 2);
+				////エフェクト生成
+				//new CEffect(o->mpParent->mPosition, 1.0f, 1.0f, "exp.tga", 4, 4, 2);
+
+				
+
 			}
 		}
 		break;
-	}
-
-	if (o->mpParent->mTag == EENEAT)
-	{
-		mHp -= 10;
 	}
 }
 //衝突処理

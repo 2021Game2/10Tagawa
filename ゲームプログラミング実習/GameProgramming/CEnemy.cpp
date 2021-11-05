@@ -2,6 +2,9 @@
 #include "CEffect.h"
 #include "CTaskManager.h"
 #include "CCollisionManager.h"
+#include "stdio.h"
+#include "stdlib.h"
+#include "time.h"
 
 #define HP 10	//耐久値
 
@@ -18,6 +21,10 @@ CEnemy::CEnemy(CModel *model, CVector position,
 , mAttack(false)
 , mAttackLag(ATTACKLAG)
 ,mCnt(30)
+,kai(5)
+,fkai(5)
+,max(5)
+,min(0)
 {
 	sCount++;
 
@@ -33,6 +40,8 @@ CEnemy::CEnemy(CModel *model, CVector position,
 	mPriority = 1;
 	CTaskManager::Get()->Remove(this); //削除して
 	CTaskManager::Get()->Add(this); //追加する
+
+
 }
 
 //更新処理
@@ -53,6 +62,17 @@ void CEnemy::Update() {
 
 		
 	}
+
+
+	srand((unsigned)time(NULL)); //乱数の仕組みを初期化。
+	for (fkai = 5; fkai <= kai; fkai = fkai + 1)	//kai分繰り返す
+	{
+		ran = (rand() % (max - min + 1)) + min; //乱数の生成
+	}
+			mPosition.mY = ran;
+			mPosition.mX = ran;
+
+	return;
 
 	//行列を更新
 	CTransform::Update();

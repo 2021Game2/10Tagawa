@@ -22,7 +22,7 @@ CPlayer *CPlayer::spThis = 0;
 
 #define FIRECOUNT 15	//”­ËŠÔŠu
 #define HP 10	//‘Ï‹v’l
-#define G -0.1	//d—Í
+#define G 1	//d—Í
 
 
 

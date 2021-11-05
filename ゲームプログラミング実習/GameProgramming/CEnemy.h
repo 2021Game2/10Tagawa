@@ -16,6 +16,13 @@ public:
 	int mAttackLag;		//攻撃フラグが立った後の攻撃開始までのラグ
 	int mCnt;
 
+	//乱数
+	int ran;	//乱数の値
+	int kai;	//乱数を生み出す回数
+	int fkai;	//for文を繰り返す回数
+	int max;	//最大
+	int min;	//最小
+
 	//コライダ
 	CCollider mCollider1;
 

@@ -45,13 +45,12 @@ void CSceneGame::Init() {
 
 	//キャラクターにモデルを設定
 	mPlayer.Init(&CRes::sModelX);
-	mPlayer.mPosition = CVector(0.0f, 7.0f, 0.0f);
+	mPlayer.mPosition = CVector(0.0f, 0.0f, 0.0f);
 
 	mModel.Load("sphere.obj","sphere.mtl");
 	//(右左、上下、前後ろ)
-	new CEnemy(&mModel, CVector(-7, 3, 0), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CEnemy(&mModel, CVector(7, 6, 10), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CEnemy(&mModel, CVector(-5, 2, 40), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CEnemy(&mModel, CVector(0, 5, 0), CVector(0, 0, 0), CVector(1, 1, 1));
+	//new CEnemy(&mModel, CVector(-5, 5, 0), CVector(0, 0, 0), CVector(1, 1, 1));
 
 	//敵の初期設定
 	mEnemy.Init(&CRes::sKnight);

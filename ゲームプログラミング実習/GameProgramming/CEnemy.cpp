@@ -6,7 +6,7 @@
 #define HP 10	//耐久値
 
 int CEnemy::sCount = 0;	//インスタンス数
-#define AL 10	//攻撃開始までのラグ
+#define ATTACKLAG 100	//攻撃開始までのラグ
 #define HP 10
 
 //コンストラクタ
@@ -16,7 +16,8 @@ CEnemy::CEnemy(CModel *model, CVector position,
 : mCollider1(this, &mMatrix, CVector(0.0f, 0.5f, 0.0f), 5.0f)
 , mHp(HP)
 , mAttack(false)
-, mAttackLag(AL)
+, mAttackLag(ATTACKLAG)
+,mCnt(30)
 {
 	sCount++;
 
@@ -39,15 +40,18 @@ void CEnemy::Update() {
 	//HPが0以下の時　撃破
 	if (mHp <= 0)
 	{
-		mHp--;
+		mTag = EENEAT;
+
 		//15フレーム毎にエフェクト
 		//if (mHp % 60 == 0)
 			//エフェクト生成
-			new CEffect(mPosition, 1.0f, 1.0f, "exp.tga", 4, 4, 2);
-		//下降させる
-		mPosition.mY -= 0.03f;
+			new CEffect(mPosition, 5.0f, 5.0f, "exp.tga", 4, 4, 2);
+		////下降させる
+		//mPosition.mY -= 0.03f;
 		CTransform::Update();	//行列更新
 		return;	//呼び元へ戻す
+
+		
 	}
 
 	//行列を更新
@@ -71,16 +75,21 @@ void CEnemy::Collision(CCollider *m, CCollider *o) {
 //			return;
 		//コライダのmとyが衝突しているか判定
 		if (CCollider::Collision(m, o)) {
-				mAttack == true;
-
-				if (mAttackLag <= 0) {
-					mAttackLag++;
+			if (o->mpParent->mTag == EPLAYER) 
+			{
+				//3秒後に爆発
+				mCnt -=1;
+				if (mCnt == 0) {
+					mHp -= 1;
+					mCnt = 30;
 				}
 				return;
-				if (mAttackLag > -10)
-				{
-					mAttackLag--;
-				}
+			}
+
+		else {
+				mCnt = 30;
+				mHp = 10;
+			}
 		}
 		break;
 	case CCollider::ETRIANGLE: //三角コライダの時

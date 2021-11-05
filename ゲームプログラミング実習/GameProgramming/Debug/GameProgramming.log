@@ -1,6 +1,4 @@
-﻿  CEnemy.cpp
-C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CEnemy.cpp(74,16): warning C4805: '==': 演算中の 'int' 型と 'bool' 型の混用は安全ではありません
-C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CEnemy.cpp(74,13): warning C4553: '==': 式の結果が使用されていません。'=' を意図していますか?
-  CPlayer.cpp
+﻿  CPlayer.cpp
+  CSceneGame.cpp
   コードを生成中...
   GameProgramming.vcxproj -> C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\Debug\GameProgramming.exe

@@ -14,6 +14,7 @@ public:
 	int mHp;	//ヒットポイント
 	int mAttack;	//攻撃フラグ
 	int mAttackLag;		//攻撃フラグが立った後の攻撃開始までのラグ
+	int mCnt;
 
 	//コライダ
 	CCollider mCollider1;

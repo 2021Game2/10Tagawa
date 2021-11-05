@@ -113,11 +113,10 @@ void CPlayer::Collision(CCollider *m, CCollider *o) {
 		if (o->mType == CCollider::ESPHERE) {
 			if (CCollider::Collision(m, o))
 			{
-				////エフェクト生成
-				//new CEffect(o->mpParent->mPosition, 1.0f, 1.0f, "exp.tga", 4, 4, 2);
-
-				
-
+				if (o->mpParent->mTag == EENEAT) {
+					if(mTag==EENEAT){}
+					mHp -= 10;
+				}				
 			}
 		}
 		break;

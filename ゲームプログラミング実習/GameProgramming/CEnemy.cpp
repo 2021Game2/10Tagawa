@@ -24,8 +24,8 @@ CEnemy::CEnemy(CModel *model, CVector position,
 , mAttack(false)
 , mAttackLag(ATTACKLAG)
 ,mCnt(30)
-,max(5)
-,min(0)
+, max(5)
+, min(0)
 {
 	sCount++;
 
@@ -72,11 +72,9 @@ void CEnemy::Update() {
 	{
 		ran = (rand() % (max - min + 1)) + min; //—”‚Ì¶¬
 
-		mPosition.mY += ran;
-		mPosition.mX += ran;
+	/*	mPosition.mY += ran;
+		mPosition.mX += ran;*/
 	}
-
-	return;
 
 
 	//s—ñ‚ğXV

@@ -21,6 +21,7 @@ public:
 	int mAttackLag;		//攻撃フラグが立った後の攻撃開始までのラグ
 	int mCnt;
 
+
 	//乱数
 	int ran;	//乱数の値
 	int max;	//最大

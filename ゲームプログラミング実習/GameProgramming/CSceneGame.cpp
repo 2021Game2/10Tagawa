@@ -15,13 +15,18 @@
 #include"CEnemy.h"
 
 
+
+
 //CMatrix Matrix;
 
-CSceneGame::~CSceneGame() {
+CSceneGame::~CSceneGame()
+
+ {
 
 }
 
-void CSceneGame::Init() {
+void CSceneGame::Init()
+{
 	mJump.Load("jump.wav");
 
 //	mBillBoard.Set(CVector(0.0f, 5.0f, 0.0f), 1.0f, 1.0f);
@@ -49,8 +54,13 @@ void CSceneGame::Init() {
 
 	mModel.Load("sphere.obj","sphere.mtl");
 
+
+
+	return;
 	//(右左、上下、前後ろ)
 	new CEnemy(&mModel, CVector(-5, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
+
+
 
 	//敵の初期設定
 	mEnemy.Init(&CRes::sKnight);

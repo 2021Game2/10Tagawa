@@ -6,13 +6,23 @@
 #include <math.h>
 
 #include "CEffect.h"
+#define G -1	//重力
+#define VJ0 10	//ジャンプ力
+
+bool CXPlayer::mJumping;
 
 CXPlayer::CXPlayer()
 	: mColSphereBody(this, nullptr, CVector(), 0.5f)
 	, mColSphereHead(this, nullptr, CVector(0.0f, 5.0f, -3.0f), 0.5f)
+	, mJump(0)
+	, mJflag(false)
+
 {
 	//タグにプレイヤーを設定します
 	mTag = EPLAYER;
+
+	mJumping = false;
+
 }
 
 void CXPlayer::Init(CModelX* model)
@@ -111,7 +121,10 @@ void CXPlayer::Update()
 			//位置調整
 			CVector tpos = mPosition;
 			tpos.mY += 2.0f;
-			new CEffect(tpos, 2.0f, 0.0f, "exp.tga", 4, 4, 2);
+			//new CEffect(tpos, 2.0f, 0.0f, "exp.tga", 4, 4, 2);
+			mVj = VJ0;
+			mJflag = true;
+			mJumping = true;
 
 			ChangeAnimation(3, true, 30);
 		}else if (Move.Length() != 0.0f){

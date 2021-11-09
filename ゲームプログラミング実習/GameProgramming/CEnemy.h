@@ -4,11 +4,16 @@
 #include "CCharacter.h"
 //コライダクラスのインクルード
 #include "CCollider.h"
+#include "CText.h"
+
 /*
 エネミークラス
 キャラクタクラスを継承
 */
 class CEnemy : public CCharacter {
+
+	//CText mFont;
+
 public:
 	static int sCount;	//インスタンス数
 	int mHp;	//ヒットポイント
@@ -18,8 +23,6 @@ public:
 
 	//乱数
 	int ran;	//乱数の値
-	int kai;	//乱数を生み出す回数
-	int fkai;	//for文を繰り返す回数
 	int max;	//最大
 	int min;	//最小
 
@@ -29,6 +32,7 @@ public:
 	//コンストラクタ
 	//CEnemy(モデル, 位置, 回転, 拡縮)
 	CEnemy(CModel *model, CVector position, CVector rotation, CVector scale);
+
 
 	//更新処理
 	void Update();
@@ -43,6 +47,7 @@ public:
 	//Collision(コライダ1, コライダ2)
 	void Collision(CCollider *m, CCollider *o);
 	void TaskCollision();
+	//void Render2D();
 };
 
 #endif

@@ -20,9 +20,7 @@
 
 CPlayer *CPlayer::spThis = 0;
 
-#define FIRECOUNT 15	//発射間隔
 #define HP 10	//耐久値
-#define G 1	//重力
 
 
 
@@ -39,6 +37,8 @@ CPlayer::CPlayer()
 	spThis = this;
 	//テクスチャファイルの読み込み（1行64列）
 	mText.LoadTexture("FontWhite.tga", 1, 64);
+
+
 }
 
 //更新処理
@@ -74,15 +74,17 @@ void CPlayer::Update() {
 	}
 
 	//スペースキー入力で弾発射
-	if (CKey::Push(VK_SPACE) && mCount == 0) {
-		mCount = FIRECOUNT;
-		CBullet *bullet = new CBullet();
-		bullet->Set(0.1f, 1.5f);
-		bullet->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
-		bullet->mRotation = mRotation;
-		bullet->Update();
+	if (CKey::Push(VK_SPACE)) {
+		//mCount = FIRECOUNT;
+		//CBullet *bullet = new CBullet();
+		//bullet->Set(0.1f, 1.5f);
+		//bullet->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
+		//bullet->mRotation = mRotation;
+		//bullet->Update();
 //		TaskManager.Add(bullet);
 	}
+
+	mPosition.mY -= 0.03f;
 
 	//CTransformの更新
 	CTransform::Update();

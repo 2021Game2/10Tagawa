@@ -5,6 +5,9 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "time.h"
+#include "CCamera.h"
+#include "CUtil.h"
+
 
 #define HP 10	//耐久値
 
@@ -21,8 +24,6 @@ CEnemy::CEnemy(CModel *model, CVector position,
 , mAttack(false)
 , mAttackLag(ATTACKLAG)
 ,mCnt(30)
-,kai(5)
-,fkai(5)
 ,max(5)
 ,min(0)
 {
@@ -41,6 +42,7 @@ CEnemy::CEnemy(CModel *model, CVector position,
 	CTaskManager::Get()->Remove(this); //削除して
 	CTaskManager::Get()->Add(this); //追加する
 
+	//mFont.LoadTexture("FontG.png", 1, 4096 / 64);
 
 }
 
@@ -63,16 +65,19 @@ void CEnemy::Update() {
 		
 	}
 
+	int i;
+	srand((unsigned)time(NULL)); //乱数の仕組みを初期化
 
-	srand((unsigned)time(NULL)); //乱数の仕組みを初期化。
-	for (fkai = 5; fkai <= kai; fkai = fkai + 1)	//kai分繰り返す
+	for (i = 0; i <= 10; i++)	//i分繰り返す
 	{
 		ran = (rand() % (max - min + 1)) + min; //乱数の生成
+
+		mPosition.mY += ran;
+		mPosition.mX += ran;
 	}
-			mPosition.mY = ran;
-			mPosition.mX = ran;
 
 	return;
+
 
 	//行列を更新
 	CTransform::Update();
@@ -135,3 +140,19 @@ void CEnemy::TaskCollision()
 	mCollider1.ChangePriority();
 	CCollisionManager::Get()->Collision(&mCollider1, COLLISIONRANGE);
 }
+
+//void Render2D() {
+//	CVector ret;
+//	Camera.WorldToScreen(&ret, mPosition);
+//
+//	//2D描画開始
+//	CUtil::Start2D(0, 800, 0, 600);
+//
+//	//文字列の描画
+//	mFont.DrawString("TEST", ret.mX, ret.mY, 8, 16);
+//
+//
+//	//2Dの描画終了
+//	CUtil::End2D();
+//
+//}

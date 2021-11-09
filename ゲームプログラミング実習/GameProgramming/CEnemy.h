@@ -23,7 +23,7 @@ public:
 
 
 	//—”
-	int ran;	//—”‚Ì’l
+	float ran;	//—”‚Ì’l
 	int max;	//Å‘å
 	int min;	//Å¬
 

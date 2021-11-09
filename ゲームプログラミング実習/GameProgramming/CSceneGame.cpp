@@ -56,18 +56,18 @@ void CSceneGame::Init()
 
 
 
-	return;
+
 	//(右左、上下、前後ろ)
-	new CEnemy(&mModel, CVector(-5, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CEnemy(&mModel, CVector(0, 10, 0), CVector(0, 0, 0), CVector(1, 1, 1));
 
+	
 
-
-	//敵の初期設定
-	mEnemy.Init(&CRes::sKnight);
-	mEnemy.mAnimationFrameSize = 1024;
-	//敵の配置
-	mEnemy.mPosition = CVector(7.0f, 0.0f, 0.0f);
-	mEnemy.ChangeAnimation(2, true, 200);
+	////敵の初期設定
+	//mEnemy.Init(&CRes::sKnight);
+	//mEnemy.mAnimationFrameSize = 1024;
+	////敵の配置
+	//mEnemy.mPosition = CVector(7.0f, 0.0f, 0.0f);
+	//mEnemy.ChangeAnimation(2, true, 200);
 
 	//カメラ初期化
 	Camera.Init();

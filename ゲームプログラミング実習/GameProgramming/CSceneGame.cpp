@@ -14,8 +14,9 @@
 
 #include"CEnemy.h"
 
+#include "CEnemy2.h"
 
-
+#include "CSea.h"
 
 //CMatrix Matrix;
 
@@ -32,7 +33,7 @@ void CSceneGame::Init()
 //	mBillBoard.Set(CVector(0.0f, 5.0f, 0.0f), 1.0f, 1.0f);
 
 	//テキストフォントの読み込みと設定
-	mFont.LoadTexture("FontG.png", 1, 4096 / 64);
+	//mFont.LoadTexture("FontG.png", 1, 4096 / 64);
 
 	CRes::sModelX.Load(MODEL_FILE);
 	CRes::sKnight.Load("knight\\knight_low.x");
@@ -53,14 +54,21 @@ void CSceneGame::Init()
 	mPlayer.mPosition = CVector(0.0f, 0.0f, 0.0f);
 
 	mModel.Load("sphere.obj","sphere.mtl");
+	mModel2.Load("sea OBJ.obj", "sea MTL.mtl");
 
+						//(右左 上下 前後ろ)
+	new CEnemy(&mModel, CVector(0, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CEnemy(&mModel, CVector(5, 4, 5), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CEnemy(&mModel, CVector(20, 0, 20), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CEnemy(&mModel, CVector(-20, 2, 10), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CEnemy(&mModel, CVector(20, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
 
+	new CEnemy2(&mModel, CVector(-10, 0, -20), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CEnemy2(&mModel, CVector(-20, 5, -10), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CEnemy2(&mModel, CVector(20, 5, -10), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CEnemy2(&mModel, CVector(10, 0, -10), CVector(0, 0, 0), CVector(1, 1, 1));
 
-
-	//(右左、上下、前後ろ)
-	new CEnemy(&mModel, CVector(0, 10, 0), CVector(0, 0, 0), CVector(1, 1, 1));
-
-	
+	new CSea(&mModel2, CVector(0, -1, 0), CVector(0, 0, 0), CVector(10, 10, 10));
 
 	////敵の初期設定
 	//mEnemy.Init(&CRes::sKnight);

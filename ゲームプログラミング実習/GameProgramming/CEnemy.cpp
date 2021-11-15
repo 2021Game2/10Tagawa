@@ -12,7 +12,6 @@
 #define HP 10	//耐久値
 
 int CEnemy::sCount = 0;	//インスタンス数
-#define ATTACKLAG 100	//攻撃開始までのラグ
 #define HP 10
 
 //コンストラクタ
@@ -22,9 +21,8 @@ CEnemy::CEnemy(CModel *model, CVector position,
 : mCollider1(this, &mMatrix, CVector(0.0f, 0.5f, 0.0f), 5.0f)
 , mHp(HP)
 , mAttack(false)
-, mAttackLag(ATTACKLAG)
 ,mCnt(30)
-, max(1)
+, max(2)
 , min(0)
 {
 	sCount++;
@@ -70,19 +68,19 @@ void CEnemy::Update() {
 
 	for (i = 0; i <= 1; i++)	//1回繰り返す
 	{
-		ran = (rand() % (max - min + 1))/1.0 -0.25; //乱数の生成
+		ran = (rand() % (max - min + 1)) / 4.0 - 0.25; //乱数の生成
 
-		mPosition.mY += ran;
+		//mPosition.mY += ran;
 		mPosition.mX += ran;
-		mPosition.mX += ran;
+		//mPosition.mZ += ran;
+
+		CEnemy::mMoving = true;
 
 	}
-
+	
 
 	//行列を更新
 	CTransform::Update();
-	//位置を移動
-	//mPosition = CVector(0.0f, 0.0f, 0.9f) * mMatrix;
 }
 //衝突処理
 //Collision(コライダ1, コライダ2)

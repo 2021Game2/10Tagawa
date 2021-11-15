@@ -20,7 +20,7 @@ public:
 	int mAttack;	//攻撃フラグ
 	int mAttackLag;		//攻撃フラグが立った後の攻撃開始までのラグ
 	int mCnt;
-
+	bool mMoving;			//移動状態かどうか返すフラグ
 
 	//乱数
 	float ran;	//乱数の値

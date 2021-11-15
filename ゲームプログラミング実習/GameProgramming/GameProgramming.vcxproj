@@ -119,6 +119,7 @@
     <ClCompile Include="CRes.cpp" />
     <ClCompile Include="CSceneGame.cpp" />
     <ClCompile Include="CSceneManager.cpp" />
+    <ClCompile Include="Csea.cpp" />
     <ClCompile Include="CShader.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CTaskManager.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CSceneGame.h" />
     <ClInclude Include="CSceneManager.h" />
+    <ClInclude Include="CSea.h" />
     <ClInclude Include="CShader.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CTask.h" />

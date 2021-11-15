@@ -147,6 +147,9 @@
     <ClCompile Include="CInput.cpp">
       <Filter>ソース ファイル\Lib</Filter>
     </ClCompile>
+    <ClCompile Include="Csea.cpp">
+      <Filter>ソース ファイル\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -274,6 +277,9 @@
     </ClInclude>
     <ClInclude Include="CParticle.h">
       <Filter>ヘッダー ファイル\Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="CSea.h">
+      <Filter>ソース ファイル\Base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

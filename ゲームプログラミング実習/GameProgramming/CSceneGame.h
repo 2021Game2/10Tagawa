@@ -20,6 +20,8 @@ public:
 
 
 	CModel mModel;
+	CModel mModel2;
+
 	//キャラクタのインスタンス
 	CXPlayer mPlayer;
 	//敵のインスタンス

@@ -7,5 +7,6 @@ CMap::CMap()
 	CTransform::Update();
 
 	mModel.Load("sky.obj", "sky.mtl");
+
 	mpModel = &mModel;
 }

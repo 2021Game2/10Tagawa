@@ -18,6 +18,8 @@
 
 #include "CSea.h"
 
+#include "CTrash.h"
+
 //CMatrix Matrix;
 
 CSceneGame::~CSceneGame()
@@ -55,6 +57,8 @@ void CSceneGame::Init()
 
 	mModel.Load("sphere.obj","sphere.mtl");
 	mModel2.Load("sea OBJ.obj", "sea MTL.mtl");
+	mModel3.Load("trash.obj", "trash.mtl");
+
 
 						//(âEç∂ è„â∫ ëOå„ÇÎ)
 	new CEnemy(&mModel, CVector(0, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
@@ -68,7 +72,10 @@ void CSceneGame::Init()
 	new CEnemy2(&mModel, CVector(20, 5, -10), CVector(0, 0, 0), CVector(1, 1, 1));
 	new CEnemy2(&mModel, CVector(10, 0, -10), CVector(0, 0, 0), CVector(1, 1, 1));
 
-	new CSea(&mModel2, CVector(0, -1, 0), CVector(0, 0, 0), CVector(10, 10, 10));
+	new CSea(&mModel2, CVector(0, -2, 0), CVector(0, 0, 0), CVector(25, 25, 25));
+
+	new CTrash(&mModel3, CVector(2, 0, 0), CVector(0, 0, 0), CVector(3, 3, 3));
+
 
 	////ìGÇÃèâä˙ê›íË
 	//mEnemy.Init(&CRes::sKnight);

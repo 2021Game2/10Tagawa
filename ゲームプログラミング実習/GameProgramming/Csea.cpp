@@ -5,7 +5,7 @@
 //CEnemy(ÉÇÉfÉã, à íu, âÒì], ägèk)
 CSea::CSea(CModel* model, CVector position,
 	CVector rotation, CVector scale)
-	: mCollider1(this, &mMatrix, CVector(0.0f, 0.5f, 0.0f), 5.0f)
+	: mCollider1(this, &mMatrix, CVector(0.0f, 0.5f, 0.0f), 0.0f)
 {
 
 	mTag = EENEMY;

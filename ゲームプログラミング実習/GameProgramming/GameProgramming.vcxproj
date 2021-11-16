@@ -126,6 +126,8 @@
     <ClCompile Include="CText.cpp" />
     <ClCompile Include="CTexture.cpp" />
     <ClCompile Include="CTransform.cpp" />
+    <ClCompile Include="CTrash.cpp" />
+    <ClCompile Include="CTreasure.cpp" />
     <ClCompile Include="CTriangle.cpp" />
     <ClCompile Include="CUtil.cpp" />
     <ClCompile Include="CVector.cpp" />
@@ -169,6 +171,8 @@
     <ClInclude Include="CText.h" />
     <ClInclude Include="CTexture.h" />
     <ClInclude Include="CTransform.h" />
+    <ClInclude Include="CTrash.h" />
+    <ClInclude Include="CTreasure.h" />
     <ClInclude Include="CTriangle.h" />
     <ClInclude Include="CUtil.h" />
     <ClInclude Include="CVector.h" />

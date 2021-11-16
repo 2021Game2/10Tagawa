@@ -23,6 +23,7 @@ public:
 		EENEMY,		//敵
 		EBULLETPLAYER,	//プレイヤー弾
 		EENEAT,	//敵攻撃
+		ITEM,
 	};
 	ETag mTag;
 	CModel *mpModel; //モデルのポインタ

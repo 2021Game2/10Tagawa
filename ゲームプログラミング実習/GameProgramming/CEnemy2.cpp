@@ -46,6 +46,7 @@ CEnemy2::CEnemy2(CModel* model, CVector position,
 
 }
 
+
 //更新処理
 void CEnemy2::Update() {
 	//HPが0以下の時　撃破
@@ -61,8 +62,6 @@ void CEnemy2::Update() {
 		//mPosition.mY -= 0.03f;
 		CTransform::Update();	//行列更新
 		return;	//呼び元へ戻す
-
-
 	}
 
 	int i;
@@ -86,6 +85,8 @@ void CEnemy2::Update() {
 	//位置を移動
 	//mPosition = CVector(0.0f, 0.0f, 0.9f) * mMatrix;
 }
+
+
 //衝突処理
 //Collision(コライダ1, コライダ2)
 void CEnemy2::Collision(CCollider* m, CCollider* o) {
@@ -136,6 +137,7 @@ void CEnemy2::Collision(CCollider* m, CCollider* o) {
 
 	//mCollider1.mpMatrix = &mpCombinedMatrix[1];
 }
+
 
 void CEnemy2::TaskCollision()
 {

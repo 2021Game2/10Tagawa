@@ -150,6 +150,12 @@
     <ClCompile Include="Csea.cpp">
       <Filter>ソース ファイル\Base</Filter>
     </ClCompile>
+    <ClCompile Include="CTreasure.cpp">
+      <Filter>ソース ファイル\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="CTrash.cpp">
+      <Filter>ソース ファイル\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -279,6 +285,12 @@
       <Filter>ヘッダー ファイル\Lib</Filter>
     </ClInclude>
     <ClInclude Include="CSea.h">
+      <Filter>ソース ファイル\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CTreasure.h">
+      <Filter>ソース ファイル\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CTrash.h">
       <Filter>ソース ファイル\Base</Filter>
     </ClInclude>
   </ItemGroup>

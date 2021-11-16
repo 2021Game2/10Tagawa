@@ -9,7 +9,8 @@
 #include "CUtil.h"
 
 
-#define HP 10	//耐久値
+
+#define HP 1	//耐久値
 
 int CEnemy::sCount = 0;	//インスタンス数
 #define HP 10
@@ -51,17 +52,13 @@ void CEnemy::Update() {
 	{
 		mTag = EENEAT;
 
-		//15フレーム毎にエフェクト
-		//if (mHp % 60 == 0)
 			//エフェクト生成
 			new CEffect(mPosition, 5.0f, 5.0f, "exp.tga", 4, 4, 2);
-		////下降させる
-		//mPosition.mY -= 0.03f;
 		CTransform::Update();	//行列更新
 		return;	//呼び元へ戻す
-
-		
 	}
+
+
 
 	int i;
 	srand((unsigned)time(NULL)); //乱数の仕組みを初期化
@@ -76,12 +73,16 @@ void CEnemy::Update() {
 
 		CEnemy::mMoving = true;
 
+		if (mPosition.mX > 10) {
+			mPosition.mX - 1;
+		}
 	}
-	
 
 	//行列を更新
 	CTransform::Update();
 }
+
+
 //衝突処理
 //Collision(コライダ1, コライダ2)
 void CEnemy::Collision(CCollider *m, CCollider *o) {
@@ -133,11 +134,13 @@ void CEnemy::Collision(CCollider *m, CCollider *o) {
 	//mCollider1.mpMatrix = &mpCombinedMatrix[1];
 }
 
+
 void CEnemy::TaskCollision()
 {
 	mCollider1.ChangePriority();
 	CCollisionManager::Get()->Collision(&mCollider1, COLLISIONRANGE);
 }
+
 
 //void Render2D() {
 //	CVector ret;

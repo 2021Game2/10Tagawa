@@ -3,6 +3,7 @@
 //コライダクラスのインクルード
 #include "CCollider.h"
 
+
 class CSea : public CCharacter {
 
 	//CText mFont;

@@ -49,17 +49,15 @@ CEnemy2::CEnemy2(CModel* model, CVector position,
 
 //更新処理
 void CEnemy2::Update() {
-	//HPが0以下の時　撃破
-	if (mHp <= 0)
+	//HPが0の時　撃破
+	if (mHp = 0)
 	{
 		mTag = EENEAT;
 
-		//15フレーム毎にエフェクト
-		//if (mHp % 60 == 0)
+
 			//エフェクト生成
 		new CEffect(mPosition, 5.0f, 5.0f, "exp.tga", 4, 4, 2);
-		////下降させる
-		//mPosition.mY -= 0.03f;
+
 		CTransform::Update();	//行列更新
 		return;	//呼び元へ戻す
 	}
@@ -72,6 +70,7 @@ void CEnemy2::Update() {
 		ran = (rand() % (max - min + 1)) / 4.0 - 0.25; //乱数の生成
 
 		mPosition.mY += ran;
+
 		//mPosition.mX += ran;
 		//mPosition.mZ += ran;
 
@@ -108,7 +107,7 @@ void CEnemy2::Collision(CCollider* m, CCollider* o) {
 				//2秒後に爆発
 				mCnt -= 1;
 				if (mCnt == 0) {
-					mHp -= 1;
+					mHp -= HP;
 					mCnt = 20;
 				}
 				return;

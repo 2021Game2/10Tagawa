@@ -5,7 +5,7 @@
 //CTrash(ƒ‚ƒfƒ‹, ˆÊ’u, ‰ñ“], Šgk)
 CTrash::CTrash(CModel* model, CVector position,
 	CVector rotation, CVector scale)
-	: mCollider1(this, &mMatrix, CVector(0.5f, 0.0f, 0.0f), 2.9f)
+	: mCollider1(this, &mMatrix, CVector(0.5f, 0.5f, 0.0f), 1.9f)
 {
 
 	mTag = ITEM;
@@ -52,6 +52,7 @@ void CTrash::Collision(CCollider* m, CCollider* o) {
 		if (CCollider::Collision(m, o)) {
 			if (o->mpParent->mTag == EPLAYER)
 			{
+				
 			}
 		}
 		break;

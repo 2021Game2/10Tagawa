@@ -45,6 +45,8 @@ void CModel::Load(char *obj, char *mtl) {
 	while (fgets(buf, sizeof(buf), fp) != NULL) {
 		//データを分割する
 		char str[4][64] = { "", "", "", "" };
+		int num = sscanf(buf, "%s %s %s %s ", str[0], str[1], str[2], str[3]);
+
 		//文字列からデータを4つ変数へ代入する
 		(void)sscanf(buf, "%s %s %s %s", str[0], str[1], str[2], str[3]);
 		//先頭がnewmtlの時、マテリアルを追加する
@@ -94,7 +96,8 @@ void CModel::Load(char *obj, char *mtl) {
 	//ファイルの最後になるとNULLを返す
 	while (fgets(buf, sizeof(buf), fp) != NULL) {
 		//データを分割する
-		char str[4][64] = { "", "", "", "" };
+		char str[5][64] = { "", "", "", "" ,""};
+		int num = sscanf(buf, "%s %s %s %s %s", str[0], str[1], str[2], str[3], str[4]);
 		//文字列からデータを4つ変数へ代入する
 		//sscanf(文字列, 変換指定子, 変数)
 		(void)sscanf(buf, "%s %s %s %s", str[0], str[1], str[2], str[3]);
@@ -107,6 +110,7 @@ void CModel::Load(char *obj, char *mtl) {
 			//atof(文字列)　文字列からfloat型の値を返す
 			vertex.push_back(CVector(atof(str[1]), atof(str[2]), atof(str[3])));
 		}
+
 		else if (strcmp(str[0], "vn") == 0) {
 			//可変長配列vertexに追加
 			//atof(文字列)　文字列からfloat型の値を返す
@@ -150,7 +154,38 @@ void CModel::Load(char *obj, char *mtl) {
 				t.mMaterialIdx = idx;
 				//可変長配列mTrianglesに三角形を追加
 				mTriangles.push_back(t);
+
+				if (num == 5)
+				{
+					sscanf(str[4], "%d/%d/%d", &v[1], &u[1], &n[1]);
+					//三角形作成
+					CTriangle t;
+					t.SetVertex(vertex[v[0] - 1], vertex[v[2] - 1], vertex[v[1] - 1]);
+					t.SetNormal(normal[n[0] - 1], normal[n[2] - 1], normal[n[1] - 1]);
+					//テクスチャマッピングの設定
+					t.mUv[0] = uv[u[0] - 1];
+					t.mUv[1] = uv[u[2] - 1];
+					t.mUv[2] = uv[u[1] - 1];
+					//マテリアル番号の設定
+					t.mMaterialIdx = idx;
+					//可変長配列mTrianglesに三角形を追加
+					mTriangles.push_back(t);
+				}
+
 			}
+			if (num == 5)
+			{
+				sscanf(str[4], "%d//%d", &v[1], &n[1]);
+				//三角形作成
+				CTriangle t;
+				t.SetVertex(vertex[v[0] - 1], vertex[v[2] - 1], vertex[v[1] - 1]);
+				t.SetNormal(normal[n[0] - 1], normal[n[2] - 1], normal[n[1] - 1]);
+				//マテリアル番号の設定
+				t.mMaterialIdx = idx;
+				//可変長配列mTrianglesに三角形を追加
+				mTriangles.push_back(t);
+			}
+
 		}
 		//先頭がusemtlの時、マテリアルインデックスを取得する
 		else if (strcmp(str[0], "usemtl") == 0) {

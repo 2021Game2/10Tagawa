@@ -58,6 +58,7 @@ void CSceneGame::Init()
 	mModel.Load("sphere.obj","sphere.mtl");
 	mModel2.Load("sea OBJ.obj", "sea MTL.mtl");
 	mModel3.Load("trash.obj", "trash.mtl");
+	//mPlayer.Load("Submarine.obj", "Submarine.mtl"); //Submarine
 
 
 						//(右左 上下 前後ろ)
@@ -67,13 +68,16 @@ void CSceneGame::Init()
 	new CEnemy(&mModel, CVector(-20, 2, 10), CVector(0, 0, 0), CVector(1, 1, 1));
 	new CEnemy(&mModel, CVector(20, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
 
+	//球　上下
 	new CEnemy2(&mModel, CVector(-10, 0, -20), CVector(0, 0, 0), CVector(1, 1, 1));
 	new CEnemy2(&mModel, CVector(-20, 5, -10), CVector(0, 0, 0), CVector(1, 1, 1));
 	new CEnemy2(&mModel, CVector(20, 5, -10), CVector(0, 0, 0), CVector(1, 1, 1));
 	new CEnemy2(&mModel, CVector(10, 0, -10), CVector(0, 0, 0), CVector(1, 1, 1));
 
-	new CSea(&mModel2, CVector(0, -2, 0), CVector(0, 0, 0), CVector(25, 25, 25));
+	//ステージ
+	//new CSea(&mModel2, CVector(0, -2, 0), CVector(0, 0, 0), CVector(25, 25, 25));
 
+	//ゴミ袋
 	new CTrash(&mModel3, CVector(2, 0, 0), CVector(0, 0, 0), CVector(3, 3, 3));
 
 

@@ -12,17 +12,14 @@
 #define HP 10	//耐久値
 
 int CEnemy2::sCount = 0;	//インスタンス数
-#define ATTACKLAG 100	//攻撃開始までのラグ
-#define HP 10
 
 //コンストラクタ
 //CEnemy(モデル, 位置, 回転, 拡縮)
 CEnemy2::CEnemy2(CModel* model, CVector position,
 	CVector rotation, CVector scale)
-	: mCollider1(this, &mMatrix, CVector(0.0f, 0.5f, 0.0f), 5.0f)
+	: mCollider1(this, &mMatrix, CVector(0.0f, 0.5f, 0.0f), 3.0f)
 	, mHp(HP)
 	, mAttack(false)
-	, mAttackLag(ATTACKLAG)
 	, mCnt(20)
 	, max(2)
 	, min(0)
@@ -54,12 +51,13 @@ void CEnemy2::Update() {
 	{
 		mTag = EENEAT;
 
-
 			//エフェクト生成
 		new CEffect(mPosition, 5.0f, 5.0f, "exp.tga", 4, 4, 2);
 
 		CTransform::Update();	//行列更新
-		return;	//呼び元へ戻す
+		//return;	//呼び元へ戻す
+
+		
 	}
 
 	int i;
@@ -105,18 +103,18 @@ void CEnemy2::Collision(CCollider* m, CCollider* o) {
 			if (o->mpParent->mTag == EPLAYER)
 			{
 				//2秒後に爆発
-				mCnt -= 1;
-				if (mCnt == 0) {
+				//mCnt -= 1;
+				//if (mCnt == 0) {
 					mHp -= HP;
-					mCnt = 20;
-				}
-				return;
+				//	mCnt = 20;
+				//}
+				//return;
 			}
 
-			else {
-				mCnt = 20;
-				mHp = 10;
-			}
+			//else {
+			//	mCnt = 20;
+			//	mHp = 10;
+			//}
 		}
 		break;
 	case CCollider::ETRIANGLE: //三角コライダの時

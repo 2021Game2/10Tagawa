@@ -91,7 +91,7 @@ void CXPlayer::Update()
 		SideVec.Normalize();
 		FrontVec.Normalize();
 
-		float speed = 0.15f;
+		float speed = 0.5f;
 		CVector Move(0, 0, 0);
 
 

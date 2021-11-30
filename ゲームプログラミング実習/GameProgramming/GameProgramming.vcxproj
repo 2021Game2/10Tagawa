@@ -117,9 +117,12 @@
     <ClCompile Include="CMyShader.cpp" />
     <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="CRes.cpp" />
+    <ClCompile Include="CRock4.cpp" />
+    <ClCompile Include="CRock6.cpp" />
     <ClCompile Include="CSceneGame.cpp" />
     <ClCompile Include="CSceneManager.cpp" />
     <ClCompile Include="Csea.cpp" />
+    <ClCompile Include="CSeaweed.cpp" />
     <ClCompile Include="CShader.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CTaskManager.cpp" />
@@ -135,6 +138,7 @@
     <ClCompile Include="CXEnemy.cpp" />
     <ClCompile Include="CXPlayer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="CRock5.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CBillBoard.h" />
@@ -160,10 +164,14 @@
     <ClInclude Include="CMyShader.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CRes.h" />
+    <ClInclude Include="CRock4.h" />
+    <ClInclude Include="CRock5.h" />
+    <ClInclude Include="CRock6.h" />
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CSceneGame.h" />
     <ClInclude Include="CSceneManager.h" />
     <ClInclude Include="CSea.h" />
+    <ClInclude Include="CSeaweed.h" />
     <ClInclude Include="CShader.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CTask.h" />

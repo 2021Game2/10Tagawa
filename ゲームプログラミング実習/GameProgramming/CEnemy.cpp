@@ -9,9 +9,6 @@
 #include "CUtil.h"
 
 
-
-#define HP 1	//耐久値
-
 int CEnemy::sCount = 0;	//インスタンス数
 #define HP 10
 
@@ -19,7 +16,7 @@ int CEnemy::sCount = 0;	//インスタンス数
 //CEnemy(モデル, 位置, 回転, 拡縮)
 CEnemy::CEnemy(CModel *model, CVector position,
 	CVector rotation, CVector scale)
-: mCollider1(this, &mMatrix, CVector(0.0f, 0.5f, 0.0f), 3.0f)
+: mCollider1(this, &mMatrix, CVector(0.0f, 0.5f, 0.0f), 2.0f)
 , mHp(HP)
 , mAttack(false)
 ,mCnt(30)
@@ -48,12 +45,13 @@ CEnemy::CEnemy(CModel *model, CVector position,
 //更新処理
 void CEnemy::Update() {
 	//HPが0以下の時　撃破
-	if (mHp <= 0)
+	if (mHp = 0)
 	{
-		mTag = EENEAT;
+		mTag = EENEMY;
 
 			//エフェクト生成
 			new CEffect(mPosition, 5.0f, 5.0f, "exp.tga", 4, 4, 2);
+
 		CTransform::Update();	//行列更新
 		return;	//呼び元へ戻す
 	}
@@ -65,7 +63,7 @@ void CEnemy::Update() {
 
 	for (i = 0; i <= 1; i++)	//1回繰り返す
 	{
-		ran = (rand() % (max - min + 1)) / 4.0 - 0.25; //乱数の生成
+		ran = ((rand() % (max - min + 1)) / 4.0 - 0.25)/10; //乱数の生成
 
 		//mPosition.mY += ran;
 		mPosition.mX += ran;
@@ -102,18 +100,20 @@ void CEnemy::Collision(CCollider *m, CCollider *o) {
 			if (o->mpParent->mTag == EPLAYER) 
 			{
 				//3秒後に爆発
-				mCnt -=1;
-				if (mCnt == 0) {
-					mHp -= 1;
-					mCnt = 30;
-				}
-				return;
+				//mCnt -=1;
+				//if (mCnt == 0) {
+					mHp -= HP;
+				//	mCnt = 30;
+				//}
+				//return;
+					mEnabled = false;
+
 			}
 
-		else {
-				mCnt = 30;
-				mHp = 10;
-			}
+		//else {
+		//		mCnt = 30;
+		//		mHp = 10;
+		//	}
 		}
 		break;
 	case CCollider::ETRIANGLE: //三角コライダの時

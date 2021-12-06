@@ -17,7 +17,7 @@ int CEnemy2::sCount = 0;	//インスタンス数
 //CEnemy(モデル, 位置, 回転, 拡縮)
 CEnemy2::CEnemy2(CModel* model, CVector position,
 	CVector rotation, CVector scale)
-	: mCollider1(this, &mMatrix, CVector(0.0f, 0.5f, 0.0f), 3.0f)
+	: mCollider1(this, &mMatrix, CVector(0.0f, 0.5f, 0.0f), 2.0f)
 	, mHp(HP)
 	, mAttack(false)
 	, mCnt(20)
@@ -109,6 +109,8 @@ void CEnemy2::Collision(CCollider* m, CCollider* o) {
 				//	mCnt = 20;
 				//}
 				//return;
+					//mEnabled = false;
+
 			}
 
 			//else {

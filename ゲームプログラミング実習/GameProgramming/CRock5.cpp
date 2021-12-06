@@ -5,10 +5,10 @@
 //CTrash(モデル, 位置, 回転, 拡縮)
 CRock5::CRock5(CModel* model, CVector position,
 	CVector rotation, CVector scale)
-	: mCollider1(this, &mMatrix, CVector(0.0f, -0.1f, 0.0f), 13.0f)
+	: mCollider1(this, &mMatrix, CVector(0.0f, -0.1f, 0.0f), 7.7f)
 {
 
-	mTag = ITEM;
+	mTag = EROCK;
 
 	//モデル、位置、回転、拡縮を設定する
 	mpModel = model;	//モデルの設定

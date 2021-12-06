@@ -27,6 +27,8 @@ public:
 	CModel mModel6;
 	CModel mModel7;
 
+
+
 	//キャラクタのインスタンス
 	CXPlayer mPlayer;
 

@@ -21,9 +21,9 @@ public:
 		EZERO,		//初期値
 		EPLAYER,	//プレイヤー
 		EENEMY,		//敵
-		EBULLETPLAYER,	//プレイヤー弾
+		EROCK,	//プレイヤー弾
 		EENEAT,	//敵攻撃
-		ITEM,
+		EITEM,
 	};
 	ETag mTag;
 	CModel *mpModel; //モデルのポインタ

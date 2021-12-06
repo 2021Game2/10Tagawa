@@ -5,10 +5,10 @@
 //CTrash(モデル, 位置, 回転, 拡縮)
 CRock6::CRock6(CModel* model, CVector position,
 	CVector rotation, CVector scale)
-	: mCollider1(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 33.0f)
+	: mCollider1(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f),18.0f)
 {
 
-	mTag = ITEM;
+	mTag = EROCK;
 
 	//モデル、位置、回転、拡縮を設定する
 	mpModel = model;	//モデルの設定
@@ -42,22 +42,23 @@ void CRock6::Collision(CCollider* m, CCollider* o) {
 	{
 		return;
 	}
+
 	//相手のコライダタイプの判定
+	CVector adjust; //調整値
 	switch (o->mType)
 	{
 	case CCollider::ESPHERE: //球コライダの時
-//		if (o->mpParent->mTag == EENEMY)
-//			return;
+
 		//コライダのmとyが衝突しているか判定
 		if (CCollider::Collision(m, o)) {
 			if (o->mpParent->mTag == EPLAYER)
 			{
-
+				mPosition = mPosition + adjust;
 			}
 		}
 		break;
 	case CCollider::ETRIANGLE: //三角コライダの時
-		CVector adjust; //調整値
+		//CVector adjust; //調整値
 		//三角コライダと球コライダの衝突判定
 		if (CCollider::CollisionTriangleSphere(o, m, &adjust))
 		{	//衝突しない位置まで戻す

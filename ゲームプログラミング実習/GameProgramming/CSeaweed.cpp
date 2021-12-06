@@ -7,7 +7,7 @@ CSeaweed::CSeaweed(CModel* model, CVector position,
 	CVector rotation, CVector scale)
 {
 
-	mTag = ITEM;
+	mTag = EROCK;
 
 	//モデル、位置、回転、拡縮を設定する
 	mpModel = model;	//モデルの設定

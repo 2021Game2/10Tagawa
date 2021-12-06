@@ -68,6 +68,15 @@ void CPlayer::Update() {
 		mRotation.mX += 1;
 	}
 
+	//Qキー入力で上昇
+	if (CKey::Push('Q')) {
+		mRotation.mZ += 1;
+	}
+	//Xキー入力で下降
+	if (CKey::Push('X')) {
+		mRotation.mZ -= 1;
+	}
+
 	if (mCount > 0)
 	{
 		mCount--;
@@ -112,13 +121,21 @@ void CPlayer::Collision(CCollider *m, CCollider *o) {
 		break;
 	case CCollider::ESPHERE:
 		//相手のコライダが球コライダの時
+		CVector adjust;
 		if (o->mType == CCollider::ESPHERE) {
 			if (CCollider::Collision(m, o))
 			{
-				if (o->mpParent->mTag == EENEAT) {
-					if(mTag==EENEAT){}
-					mHp -= 10;
-				}				
+				if (o->mpParent->mTag == EENEMY) {
+					mHp -= HP;
+					if (mHp == 0) {
+						mEnabled = false;
+
+					}
+				}	
+
+				if (o->mpParent->mTag == EROCK) {
+					mPosition = mPosition + adjust;
+				}
 			}
 		}
 		break;

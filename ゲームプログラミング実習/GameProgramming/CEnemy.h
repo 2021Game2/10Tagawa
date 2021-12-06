@@ -44,6 +44,7 @@ public:
 	//	mCollider2.Render();
 	//	mCollider3.Render();
 	//}
+	
 	//衝突処理
 	//Collision(コライダ1, コライダ2)
 	void Collision(CCollider *m, CCollider *o);

@@ -8,7 +8,7 @@ CTrash::CTrash(CModel* model, CVector position,
 	: mCollider1(this, &mMatrix, CVector(0.5f, 0.5f, 0.0f), 0.5f)
 {
 
-	mTag = ITEM;
+	mTag = EITEM;
 
 	//モデル、位置、回転、拡縮を設定する
 	mpModel = model;	//モデルの設定

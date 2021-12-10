@@ -1,11 +1,13 @@
 #include "CRock4.h"
 #include "CCollisionManager.h"
+#include "CColliderMesh.h"
+
 
 //コンストラクタ
 //CTrash(モデル, 位置, 回転, 拡縮)
 CRock4::CRock4(CModel* model, CVector position,
 	CVector rotation, CVector scale)
-	: mCollider1(this, &mMatrix, CVector(0.5f, -0.5f, 0.0f), 7.5f)
+	: mCollider1(this, &mMatrix, CVector(0.5f, -0.5f, 0.0f), 4.0f)
 {
 
 	mTag = EROCK;
@@ -19,8 +21,11 @@ CRock4::CRock4(CModel* model, CVector position,
 	//優先度を1に変更する
 	mPriority = 1;
 
-	//mFont.LoadTexture("FontG.png", 1, 4096 / 64);
 
+	//CModel cube;
+	//cube.Load("resorce\\cube.obj", "resorce\\cube.mtl");
+	//mMatrixCol = CMatrix().Scale(5.0f, 5.0f, 5.0f) * mMatrix;
+	//CColliderMesh.Set(this, &mMatrixCol, &cube);
 }
 
 //更新処理

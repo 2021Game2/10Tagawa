@@ -44,10 +44,10 @@ CEnemy::CEnemy(CModel *model, CVector position,
 
 //更新処理
 void CEnemy::Update() {
+
 	//HPが0以下の時　撃破
 	if (mHp = 0)
 	{
-		mTag = EENEMY;
 
 			//エフェクト生成
 			new CEffect(mPosition, 5.0f, 5.0f, "exp.tga", 4, 4, 2);

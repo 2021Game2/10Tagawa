@@ -2,12 +2,16 @@
 #include "CKey.h"
 #include "CCamera.h"
 #include "CUtil.h"
+#include "CCollisionManager.h"
+
 #define _USE_MATH_DEFINES
 #include <math.h>
 
 #include "CEffect.h"
 #define G -1	//重力
 #define VJ0 10	//ジャンプ力
+#define HP 10	//耐久値
+
 
 bool CXPlayer::mJumping;
 
@@ -16,6 +20,8 @@ CXPlayer::CXPlayer()
 	, mColSphereHead(this, nullptr, CVector(0.0f, 5.0f, -3.0f), 0.5f)
 	, mJump(0)
 	, mJflag(false)
+	, mCount(0)
+	, mHp(HP)
 
 {
 	//タグにプレイヤーを設定します
@@ -30,8 +36,8 @@ void CXPlayer::Init(CModelX* model)
 	CXCharacter::Init(model);
 	//合成行列の設定
 	mColSphereBody.mpMatrix = &mpCombinedMatrix[9];
-	//頭
-	mColSphereHead.mpMatrix = &mpCombinedMatrix[12];
+	////頭
+	//mColSphereHead.mpMatrix = &mpCombinedMatrix[12];
 
 	mRotation.mY = 0.01f;
 }
@@ -167,4 +173,98 @@ void CXPlayer::Update()
 	Camera.SetTarget(mPosition);
 
 	CXCharacter::Update();
+}
+
+
+void CXPlayer::Collision(CCollider* m, CCollider* o) {
+	//相手がサーチの時は戻る
+	if (o->mTag == CCollider::ESEARCH)
+	{
+		return;
+	}
+	//自身のコライダタイプの判定
+	switch (m->mType) {
+	case CCollider::ELINE://線分コライダ
+		//相手のコライダが三角コライダの時
+		if (o->mType == CCollider::ETRIANGLE) {
+			CVector adjust;//調整用ベクトル
+			//三角形と線分の衝突判定
+			CCollider::CollisionTriangleLine(o, m, &adjust);
+			//位置の更新(mPosition + adjust)
+			mPosition = mPosition - adjust * -1;
+			//行列の更新
+			CTransform::Update();
+		}
+		break;
+	case CCollider::ESPHERE:
+		//相手のコライダが球コライダの時
+		CVector adjust;
+		if (o->mType == CCollider::ESPHERE) {
+			if (CCollider::Collision(m, o))
+			{
+				if (o->mpParent->mTag == EENEMY) {
+					mHp -= HP;
+					if (mHp == 0) {
+						mEnabled = false;
+
+					}
+				}
+
+				if (o->mpParent->mTag == EROCK) {
+					mPosition = mPosition + adjust;
+				}
+			}
+		}
+		break;
+	}
+}
+
+//衝突処理
+void CXPlayer::TaskCollision()
+{
+	//コライダの優先度変更
+	//mLine.ChangePriority();
+	//mLine2.ChangePriority();
+	//mLine3.ChangePriority();
+	mCollider.ChangePriority();
+	//衝突処理を実行
+	//CCollisionManager::Get()->Collision(&mLine, COLLISIONRANGE);
+	//CCollisionManager::Get()->Collision(&mLine2, COLLISIONRANGE);
+	//CCollisionManager::Get()->Collision(&mLine3, COLLISIONRANGE);
+	CCollisionManager::Get()->Collision(&mCollider, COLLISIONRANGE);
+}
+
+void CXPlayer::Render()
+{
+	////親の描画処理
+	//CCharacter::Render();
+
+	////2Dの描画開始
+	//CUtil::Start2D(-400, 400, -300, 300);
+	////描画色の設定（緑色の半透明）
+	//glColor4f(0.0f, 1.0f, 0.0f, 0.4f);
+	////文字列編集エリアの作成
+	//char buf[64];
+
+	////Y座標の表示
+	////文字列の設定
+	//sprintf(buf, "PY:%7.2f", mPosition.mY);
+	////文字列の描画
+	//mText.DrawString(buf, 100, 30, 8, 16);
+
+	////X軸回転値の表示
+	////文字列の設定
+	//sprintf(buf, "RX:%7.2f", mRotation.mX);
+	////文字列の描画
+	//mText.DrawString(buf, 100, 0, 8, 16);
+
+	////Y軸回転値の表示
+	////文字列の設定
+	//sprintf(buf, "RY:%7.2f", mRotation.mY);
+	////文字列の描画
+	//mText.DrawString(buf, 100, -100, 8, 16);
+
+	////2Dの描画終了
+	//CUtil::End2D();
+
 }

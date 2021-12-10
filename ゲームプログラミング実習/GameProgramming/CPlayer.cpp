@@ -25,10 +25,10 @@ CPlayer *CPlayer::spThis = 0;
 
 
 CPlayer::CPlayer()
-: mLine(this, &mMatrix, CVector(0.0f, 0.0f, -14.0f), CVector(0.0f, 0.0f, 17.0f))
-, mLine2(this, &mMatrix, CVector(0.0f, 5.0f, -8.0f), CVector(0.0f, -3.0f, -8.0f))
-, mLine3(this, &mMatrix, CVector(9.0f, 0.0f, -8.0f), CVector(-9.0f, 0.0f, -8.0f))
-, mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
+//: mLine(this, &mMatrix, CVector(0.0f, 0.0f, -14.0f), CVector(0.0f, 0.0f, 17.0f))
+//, mLine2(this, &mMatrix, CVector(0.0f, 5.0f, -8.0f), CVector(0.0f, -3.0f, -8.0f))
+//, mLine3(this, &mMatrix, CVector(9.0f, 0.0f, -8.0f), CVector(-9.0f, 0.0f, -8.0f))
+: mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
 , mCount(0)
 , mHp(HP)
 
@@ -77,6 +77,7 @@ void CPlayer::Update() {
 		mRotation.mZ -= 1;
 	}
 
+
 	if (mCount > 0)
 	{
 		mCount--;
@@ -84,13 +85,7 @@ void CPlayer::Update() {
 
 	//スペースキー入力で弾発射
 	if (CKey::Push(VK_SPACE)) {
-		//mCount = FIRECOUNT;
-		//CBullet *bullet = new CBullet();
-		//bullet->Set(0.1f, 1.5f);
-		//bullet->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
-		//bullet->mRotation = mRotation;
-		//bullet->Update();
-//		TaskManager.Add(bullet);
+
 	}
 
 	mPosition.mY -= 0.03f;
@@ -141,18 +136,20 @@ void CPlayer::Collision(CCollider *m, CCollider *o) {
 		break;
 	}
 }
+
+
 //衝突処理
 void CPlayer::TaskCollision()
 {
 	//コライダの優先度変更
-	mLine.ChangePriority();
-	mLine2.ChangePriority();
-	mLine3.ChangePriority();
+	//mLine.ChangePriority();
+	//mLine2.ChangePriority();
+	//mLine3.ChangePriority();
 	mCollider.ChangePriority();
 	//衝突処理を実行
-	CCollisionManager::Get()->Collision(&mLine, COLLISIONRANGE);
-	CCollisionManager::Get()->Collision(&mLine2, COLLISIONRANGE);
-	CCollisionManager::Get()->Collision(&mLine3, COLLISIONRANGE);
+	//CCollisionManager::Get()->Collision(&mLine, COLLISIONRANGE);
+	//CCollisionManager::Get()->Collision(&mLine2, COLLISIONRANGE);
+	//CCollisionManager::Get()->Collision(&mLine3, COLLISIONRANGE);
 	CCollisionManager::Get()->Collision(&mCollider, COLLISIONRANGE);
 }
 

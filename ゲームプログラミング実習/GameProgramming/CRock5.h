@@ -2,6 +2,7 @@
 #define CROCK5_H
 //コライダクラスのインクルード
 #include "CCollider.h"
+#include "CColliderMesh.h"
 
 class CRock5 : public CCharacter {
 
@@ -9,7 +10,7 @@ class CRock5 : public CCharacter {
 
 public:
 	//コライダ
-	CCollider mCollider1;
+	CColliderMesh mCollider1;
 
 	//コンストラクタ
 	//CEnemy(モデル, 位置, 回転, 拡縮)

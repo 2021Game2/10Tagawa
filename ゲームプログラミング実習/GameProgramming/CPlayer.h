@@ -21,9 +21,10 @@ public:
 	CCollider mCollider;
 	CText mText;
 	static CPlayer *spThis;
-	CColliderLine mLine; //線分コライダ
-	CColliderLine mLine2;
-	CColliderLine mLine3;
+	//CColliderLine mLine; //線分コライダ
+	//CColliderLine mLine2;
+	//CColliderLine mLine3;
+	 
 	//デフォルトコンストラクタ
 	CPlayer();
 //	CBullet bullet;

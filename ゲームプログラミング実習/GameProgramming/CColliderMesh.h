@@ -15,6 +15,7 @@ public:
 	//Set(親, 親行列, モデル)
 	//モデルから三角コライダの生成
 	void Set(CCharacter *parent, CMatrix *matrix, CModel *model);
+	//CCollider CCollider.Set;
 };
 
 #endif

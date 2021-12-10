@@ -28,6 +28,8 @@
 
 #include "CSeaweed.h"
 
+#include "CColliderTriangle.h"
+
 //CMatrix Matrix;
 
 CSceneGame::~CSceneGame()
@@ -50,7 +52,7 @@ void CSceneGame::Init()
 
 	//キャラクターにモデルを設定
 	mPlayer.Init(&CRes::sModelX);
-	mPlayer.mPosition = CVector(-30.0f, 0.0f, -45.0f);
+	mPlayer.mPosition = CVector(-10, 0, -50);
 
 	mModel.Load("resorce\\sphere.obj","resorce\\sphere.mtl");
 	mModel2.Load("resorce\\sea OBJ.obj", "resorce\\sea MTL.mtl");
@@ -61,11 +63,11 @@ void CSceneGame::Init()
 	mModel7.Load("resorce\\SeaWeed.obj", "resorce\\SeaWeed.mtl");
 
 						//(右左 上下 前後ろ)
-	new CEnemy(&mModel, CVector(0, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CEnemy(&mModel, CVector(5, 4, 5), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CEnemy(&mModel, CVector(20, 0, 20), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CEnemy(&mModel, CVector(-20, 2, 10), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CEnemy(&mModel, CVector(20, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
+	//new CEnemy(&mModel, CVector(0, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
+	//new CEnemy(&mModel, CVector(5, 4, 5), CVector(0, 0, 0), CVector(1, 1, 1));
+	//new CEnemy(&mModel, CVector(20, 0, 20), CVector(0, 0, 0), CVector(1, 1, 1));
+	//new CEnemy(&mModel, CVector(-20, 2, 10), CVector(0, 0, 0), CVector(1, 1, 1));
+	//new CEnemy(&mModel, CVector(20, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
 
 	////球　上下
 	//new CEnemy2(&mModel, CVector(-10, 0, -20), CVector(0, 0, 0), CVector(1, 1, 1));
@@ -80,11 +82,11 @@ void CSceneGame::Init()
 	//new CTrash(&mModel3, CVector(2, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
 
 
-
-	new CRock4(&mModel4, CVector(-15, -1, 43), CVector(0, 0, 0), CVector(0, 0, 0));
-	new CRock4(&mModel4, CVector(50, 0, 37), CVector(0, 0, 0), CVector(0, 0, 0));
+	new CRock4(&mModel4, CVector(8, -1, -41.5), CVector(0, 0, 0), CVector(0, 0, 0));
 
 
+	new CRock5(&mModel5, CVector(-15, -1, 43), CVector(0, 0, 0), CVector(0, 0, 0));
+	new CRock5(&mModel5, CVector(50, 0, 37), CVector(0, 0, 0), CVector(0, 0, 0));
 	new CRock5(&mModel5, CVector(-38, 2, 33), CVector(0, 0, 0), CVector(0, 0, 0));
 	new CRock5(&mModel5, CVector(-15.5, 0, -15), CVector(0, 0, 0), CVector(0, 0, 0));
 	new CRock5(&mModel5, CVector(-36.5, 2, -25), CVector(0, 0, 0), CVector(0, 0, 0));
@@ -101,8 +103,6 @@ void CSceneGame::Init()
 
 
 	//new CSeaweed(&mModel7, CVector(3, 0, 6), CVector(0, 0, 0), CVector(3, 3, 3));
-
-
 
 	//背景モデルから三角コライダを生成
 	//親インスタンスと親行列はなし
@@ -121,9 +121,9 @@ void CSceneGame::Update() {
 
 	//更新
 	CTaskManager::Get()->Update();
-
 	//衝突処理
-	CCollisionManager::Get()->Collision();
+	CTaskManager::Get()->TaskCollision();
+
 
 	Camera.Update();
 
@@ -136,13 +136,6 @@ void CSceneGame::Update() {
 
 void CSceneGame::Render() {
 //	mBillBoard.Render();
-
-	//モデル描画
-//	CRes::sModelX.Render();
-	//mPlayer.Render();
-	////敵描画
-	//mEnemy.Render();
-
 	
 	Camera.Render();
 

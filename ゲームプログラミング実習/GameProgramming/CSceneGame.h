@@ -8,6 +8,7 @@
 #include "CSound.h"
 #include "CMap.h"
 #include "CModel.h"
+#include "CColliderTriangle.h"
 /*
 ゲームのシーン
 */
@@ -27,7 +28,7 @@ public:
 	CModel mModel6;
 	CModel mModel7;
 
-
+	CColliderTriangle mColliderTriangle;
 
 	//キャラクタのインスタンス
 	CXPlayer mPlayer;

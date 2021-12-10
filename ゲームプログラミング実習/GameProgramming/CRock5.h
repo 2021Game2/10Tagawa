@@ -6,11 +6,10 @@
 
 class CRock5 : public CCharacter {
 
-	//CText mFont;
 
 public:
 	//コライダ
-	CColliderMesh mCollider1;
+	CColliderMesh mCollider2;
 
 	//コンストラクタ
 	//CEnemy(モデル, 位置, 回転, 拡縮)

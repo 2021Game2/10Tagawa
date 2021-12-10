@@ -2,19 +2,17 @@
 #define CROCK4_H
 //コライダクラスのインクルード
 #include "CCollider.h"
+#include "CColliderMesh.h"
 
 class CRock4 : public CCharacter {
-
-	CMatrix mMatrixCol;
-
 public:
 	//コライダ
-	CCollider mCollider1;
+	CColliderMesh mCollider1;
 
 	//コンストラクタ
 	//CEnemy(モデル, 位置, 回転, 拡縮)
 	CRock4(CModel* model, CVector position, CVector rotation, CVector scale);
-	CRock4 Set();
+
 
 	//更新処理
 	void Update();

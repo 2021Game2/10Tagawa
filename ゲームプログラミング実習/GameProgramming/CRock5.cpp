@@ -22,7 +22,7 @@ CRock5::CRock5(CModel* model, CVector position,
 	CTransform::Update();
 
 	//mFont.LoadTexture("FontG.png", 1, 4096 / 64);
-	mCollider1.Set(this, &mMatrix, mpModel);
+	mCollider2.Set(this, &mMatrix, mpModel);
 
 
 }

@@ -30,6 +30,10 @@
 
 #include "CColliderTriangle.h"
 
+#include "CText.h"
+
+#include "CScore.h"
+
 //CMatrix Matrix;
 
 CSceneGame::~CSceneGame()
@@ -76,7 +80,7 @@ void CSceneGame::Init()
 	new CEnemy2(&mModel, CVector(10, 0, -10), CVector(0, 0, 0), CVector(1, 1, 1));
 
 	//ステージ
-	new CSea(&mModel2, CVector(0, -3.3, 0), CVector(0, 0, 0), CVector(25, 25, 25));
+	//new CSea(&mModel2, CVector(0, -3.3, 0), CVector(0, 0, 0), CVector(25, 25, 25));
 
 	//ゴミ袋
 	//new CTrash(&mModel3, CVector(2, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
@@ -85,12 +89,12 @@ void CSceneGame::Init()
 	new CRock4(&mModel4, CVector(8, -1, -41.5), CVector(0, 0, 0), CVector(0, 0, 0));
 
 
-	new CRock5(&mModel5, CVector(-15, -1, 43), CVector(0, 0, 0), CVector(0, 0, 0));
-	new CRock5(&mModel5, CVector(50, 0, 37), CVector(0, 0, 0), CVector(0, 0, 0));
-	new CRock5(&mModel5, CVector(-38, 2, 33), CVector(0, 0, 0), CVector(0, 0, 0));
-	new CRock5(&mModel5, CVector(-15.5, 0, -15), CVector(0, 0, 0), CVector(0, 0, 0));
-	new CRock5(&mModel5, CVector(-36.5, 2, -25), CVector(0, 0, 0), CVector(0, 0, 0));
-	new CRock5(&mModel5, CVector(-15, -2, -40), CVector(0, 0, 0), CVector(0, 0, 0));
+	new CRock5(&mModel5, CVector(-15, -1, 43), CVector(0, 0, 0), CVector(1, 1, 1));
+	//new CRock5(&mModel5, CVector(50, 0, 37), CVector(0, 0, 0), CVector(1, 1, 1));
+	//new CRock5(&mModel5, CVector(-38, 2, 33), CVector(0, 0, 0), CVector(1, 1, 1));
+	//new CRock5(&mModel5, CVector(-15.5, 0, -15), CVector(0, 0, 0), CVector(1, 1, 1));
+	//new CRock5(&mModel5, CVector(-36.5, 2, -25), CVector(0, 0, 0), CVector(1, 1, 1));
+	//new CRock5(&mModel5, CVector(-15, -2, -40), CVector(0, 0, 0), CVector(1, 1, 1));
 
 
 	new CRock6(&mModel6, CVector(-55, 5, -55), CVector(0, 0, 0), CVector(15, 15, 15));
@@ -118,6 +122,8 @@ void CSceneGame::Update() {
 	if (CKey::Push(VK_ESCAPE)) {
 		exit(0);
 	}
+
+
 
 	//更新
 	CTaskManager::Get()->Update();
@@ -163,8 +169,13 @@ void CSceneGame::Render() {
 
 	glDisable(GL_BLEND);
 
-
+	//文字列の描画
 	mFont.DrawString("3D PROGRAMMING", 20, 20, 10, 12);
+
+	//mFont.DrawString("Score", 20, 20, 10, 20);
+	//sprintf(buf, "%d", CScore::mScore);
+	//mFont.DrawString(buf, 20, 20, 10, 20);
+
 
 	//2Dの描画終了
 	CUtil::End2D();

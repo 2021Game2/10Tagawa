@@ -1,5 +1,10 @@
 #include "CTrash.h"
 #include "CCollisionManager.h"
+#include "CScore.h"
+#include "CSceneGame.h"
+
+
+#define SCORE 100			//スコア
 
 //コンストラクタ
 //CTrash(モデル, 位置, 回転, 拡縮)
@@ -26,6 +31,9 @@ CTrash::CTrash(CModel* model, CVector position,
 //更新処理
 void CTrash::Update() {
 	mTag = EENEAT;
+
+	CScore::mScore += SCORE;
+
 	CTransform::Update();	//行列更新
 	return;	//呼び元へ戻す
 

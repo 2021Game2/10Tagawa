@@ -33,6 +33,9 @@ public:
 	//キャラクタのインスタンス
 	CXPlayer mPlayer;
 
+	char buf[10];
+
+
 	~CSceneGame();
 	//初期化処理のオーバーライド
 	void Init();

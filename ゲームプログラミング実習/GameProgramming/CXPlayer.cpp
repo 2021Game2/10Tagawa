@@ -36,8 +36,6 @@ void CXPlayer::Init(CModelX* model)
 	CXCharacter::Init(model);
 	//合成行列の設定
 	mColSphereBody.mpMatrix = &mpCombinedMatrix[9];
-	////頭
-	//mColSphereHead.mpMatrix = &mpCombinedMatrix[12];
 
 	mRotation.mY = 0.01f;
 }
@@ -121,6 +119,19 @@ void CXPlayer::Update()
 			Move -= FrontVec;
 			//			mPosition += CVector(0.0f, 0.0f, 0.1f) * mMatrixRotate;
 		}
+
+		//if (CKey::Push('Q'))
+		//{
+		//	Move += FrontVec;
+		//				mPosition += CVector(0.0f, 0.0f, 0.1f) * mMatrixRotate;
+		//}
+		//else if (CKey::Push('X'))
+		//{
+		//	Move -= FrontVec;
+		//				mPosition += CVector(0.0f, 0.0f, 0.1f) * mMatrixRotate;
+		//}
+
+
 
 		if (CKey::Push(' '))
 		{
@@ -226,18 +237,18 @@ void CXPlayer::TaskCollision()
 	//mLine.ChangePriority();
 	//mLine2.ChangePriority();
 	//mLine3.ChangePriority();
-	mCollider.ChangePriority();
 	//衝突処理を実行
 	//CCollisionManager::Get()->Collision(&mLine, COLLISIONRANGE);
 	//CCollisionManager::Get()->Collision(&mLine2, COLLISIONRANGE);
 	//CCollisionManager::Get()->Collision(&mLine3, COLLISIONRANGE);
+
 	CCollisionManager::Get()->Collision(&mCollider, COLLISIONRANGE);
 }
 
 void CXPlayer::Render()
 {
-	////親の描画処理
-	//CCharacter::Render();
+	//親の描画処理
+	CXCharacter::Render();
 
 	////2Dの描画開始
 	//CUtil::Start2D(-400, 400, -300, 300);

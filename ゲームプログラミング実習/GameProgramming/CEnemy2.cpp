@@ -96,8 +96,8 @@ void CEnemy2::Collision(CCollider* m, CCollider* o) {
 	switch (o->mType)
 	{
 	case CCollider::ESPHERE: //球コライダの時
-//		if (o->mpParent->mTag == EENEMY)
-//			return;
+		//if (o->mpParent->mTag == EENEMY)
+		//	return;
 		//コライダのmとyが衝突しているか判定
 		if (CCollider::Collision(m, o)) {
 			if (o->mpParent->mTag == EPLAYER)

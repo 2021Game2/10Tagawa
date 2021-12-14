@@ -1,9 +1,6 @@
-﻿  CModelX.cpp
-  CMyShader.cpp
-  CRock4.cpp
-  CSceneGame.cpp
-  CSceneManager.cpp
-  CVector.cpp
-  CRock5.cpp
+﻿  CEnemy.cpp
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CEnemy.cpp(75,17): warning C4552: '-': 式の結果が使用されていません
+  CTrash.cpp
+  CXPlayer.cpp
   コードを生成中...
   GameProgramming.vcxproj -> C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\Debug\GameProgramming.exe

@@ -97,6 +97,10 @@ void CEnemy::Collision(CCollider *m, CCollider *o) {
 //			return;
 		//ƒRƒ‰ƒCƒ_‚Ìm‚Æy‚ªÕ“Ë‚µ‚Ä‚¢‚é‚©”»’è
 		if (CCollider::Collision(m, o)) {
+			if (o->mpParent == nullptr)
+			{
+				return;
+			}
 			if (o->mpParent->mTag == EPLAYER) 
 			{
 				//3•bŒã‚É”š”­

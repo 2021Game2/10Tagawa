@@ -124,12 +124,12 @@ void CXPlayer::Update()
 		//if (CKey::Push('Q'))
 		//{
 		//	Move += FrontVec;
-		//				mPosition += CVector(0.0f, 0.0f, 0.1f) * mMatrixRotate;
+		//				mPosition += CVector(0.0f, 0.1f, 0.0f) * mMatrixRotate;
 		//}
 		//else if (CKey::Push('X'))
 		//{
 		//	Move -= FrontVec;
-		//				mPosition += CVector(0.0f, 0.0f, 0.1f) * mMatrixRotate;
+		//				mPosition += CVector(0.0f, -0.1f, 0.0f) * mMatrixRotate;
 		//}
 
 
@@ -196,21 +196,6 @@ void CXPlayer::Collision(CCollider* m, CCollider* o) {
 	}
 	//自身のコライダタイプの判定
 	switch (m->mType) {
-	case CCollider::ETRIANGLE://三角コライダ
-		//相手のコライダが三角コライダの時
-		if (o->mType == CCollider::ETRIANGLE) {
-			CVector adjust;//調整用ベクトル
-			//三角形と球の衝突判定
-			CCollider::CollisionTriangleSphere(o, m, &adjust);
-
-			//位置の更新(mPosition + adjust)
-			mPosition = mPosition - adjust * -1;
-
-			mPosition = mPosition + adjust;
-			//行列の更新
-			CTransform::Update();
-		}
-		break;
 	case CCollider::ESPHERE:
 		//相手のコライダが球コライダの時
 		CVector adjust;
@@ -227,6 +212,18 @@ void CXPlayer::Collision(CCollider* m, CCollider* o) {
 					mPosition = mPosition + adjust;
 				}
 			}
+		}
+		//相手のコライダが三角コライダの時
+		else if (o->mType == CCollider::ETRIANGLE) {
+			CVector adjust;//調整用ベクトル
+			//三角形と球の衝突判定
+			CCollider::CollisionTriangleSphere(o, m, &adjust);
+
+			//位置の更新(mPosition + adjust)
+
+			mPosition = mPosition + adjust;
+			//行列の更新
+			CTransform::Update();
 		}
 		break;
 	}

@@ -36,6 +36,8 @@
 
 //CMatrix Matrix;
 
+int Time = 30 * 60;
+
 CSceneGame::~CSceneGame()
 
  {
@@ -86,15 +88,15 @@ void CSceneGame::Init()
 	//new CTrash(&mModel3, CVector(2, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
 
 
-	new CRock4(&mModel4, CVector(8, -1, -41.5), CVector(0, 0, 0), CVector(0, 0, 0));
+	new CRock4(&mModel4, CVector(8, -1, -41.5), CVector(0, 0, 0), CVector(1, 1, 1));
 
 
 	new CRock5(&mModel5, CVector(-15, -1, 43), CVector(0, 0, 0), CVector(1, 1, 1));
-	//new CRock5(&mModel5, CVector(50, 0, 37), CVector(0, 0, 0), CVector(1, 1, 1));
-	//new CRock5(&mModel5, CVector(-38, 2, 33), CVector(0, 0, 0), CVector(1, 1, 1));
-	//new CRock5(&mModel5, CVector(-15.5, 0, -15), CVector(0, 0, 0), CVector(1, 1, 1));
-	//new CRock5(&mModel5, CVector(-36.5, 2, -25), CVector(0, 0, 0), CVector(1, 1, 1));
-	//new CRock5(&mModel5, CVector(-15, -2, -40), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CRock5(&mModel5, CVector(50, 0, 37), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CRock5(&mModel5, CVector(-38, 2, 33), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CRock5(&mModel5, CVector(-15.5, 0, -15), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CRock5(&mModel5, CVector(-36.5, 2, -25), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CRock5(&mModel5, CVector(-15, -2, -40), CVector(0, 0, 0), CVector(1, 1, 1));
 
 
 	new CRock6(&mModel6, CVector(-55, 5, -55), CVector(0, 0, 0), CVector(15, 15, 15));
@@ -123,6 +125,10 @@ void CSceneGame::Update() {
 		exit(0);
 	}
 
+	if (Time > 0) {
+		Time--;
+	}
+	char buf[10];
 
 
 	//更新
@@ -133,9 +139,11 @@ void CSceneGame::Update() {
 
 	Camera.Update();
 
+	if (Time == 0) {
+		mFont.DrawString("GAME OVER", 400, 300, 32, 32);
+	}
+
 	//mJump.Play();
-
-
 //	mBillBoard.Update();
 	return;
 }
@@ -170,11 +178,17 @@ void CSceneGame::Render() {
 	glDisable(GL_BLEND);
 
 	//文字列の描画
-	mFont.DrawString("3D PROGRAMMING", 20, 20, 10, 12);
+	//mFont.DrawString("3D PROGRAMMING", 20, 20, 10, 12);
 
-	//mFont.DrawString("Score", 20, 20, 10, 20);
-	//sprintf(buf, "%d", CScore::mScore);
-	//mFont.DrawString(buf, 20, 20, 10, 20);
+	//スコア
+	mFont.DrawString("SCORE", 20, 550, 10, 20);
+	sprintf(buf, "%d", CScore::mScore);
+	mFont.DrawString(buf, 20, 500, 10, 20);
+
+	//タイム
+	mFont.DrawString("TIME", 725, 550, 10, 20);
+	sprintf(buf, "%d", Time/60);
+	mFont.DrawString(buf, 750, 500, 10, 20);
 
 
 	//2Dの描画終了

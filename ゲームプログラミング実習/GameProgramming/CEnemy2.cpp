@@ -65,15 +65,17 @@ void CEnemy2::Update() {
 
 	for (i = 0; i <= 1; i++)	//1‰ñŒJ‚è•Ô‚·
 	{
-		ran = (rand() % (max - min + 1)) / 4.0 - 0.25; //—”‚Ì¶¬
+		ran = ((rand() % (max - min + 1)) / 4.0 - 0.25) / 10; //—”‚Ì¶¬
 
 		mPosition.mY += ran;
-
 		//mPosition.mX += ran;
 		//mPosition.mZ += ran;
 
 		CEnemy2::mMoving = true;
 
+		if (mPosition.mX > 10) {
+			mPosition.mX - 1;
+		}
 	}
 
 

@@ -36,6 +36,7 @@ void CXPlayer::Init(CModelX* model)
 	CXCharacter::Init(model);
 	//合成行列の設定
 	mColSphereBody.mpMatrix = &mpCombinedMatrix[9];
+	mColSphereHead.mpMatrix = &mpCombinedMatrix[12];
 
 	mRotation.mY = 0.01f;
 }
@@ -195,14 +196,17 @@ void CXPlayer::Collision(CCollider* m, CCollider* o) {
 	}
 	//自身のコライダタイプの判定
 	switch (m->mType) {
-	case CCollider::ELINE://線分コライダ
+	case CCollider::ETRIANGLE://三角コライダ
 		//相手のコライダが三角コライダの時
 		if (o->mType == CCollider::ETRIANGLE) {
 			CVector adjust;//調整用ベクトル
-			//三角形と線分の衝突判定
-			CCollider::CollisionTriangleLine(o, m, &adjust);
+			//三角形と球の衝突判定
+			CCollider::CollisionTriangleSphere(o, m, &adjust);
+
 			//位置の更新(mPosition + adjust)
 			mPosition = mPosition - adjust * -1;
+
+			mPosition = mPosition + adjust;
 			//行列の更新
 			CTransform::Update();
 		}
@@ -217,10 +221,8 @@ void CXPlayer::Collision(CCollider* m, CCollider* o) {
 					mHp -= HP;
 					if (mHp == 0) {
 						mEnabled = false;
-
 					}
 				}
-
 				if (o->mpParent->mTag == EROCK) {
 					mPosition = mPosition + adjust;
 				}
@@ -234,15 +236,12 @@ void CXPlayer::Collision(CCollider* m, CCollider* o) {
 void CXPlayer::TaskCollision()
 {
 	//コライダの優先度変更
-	//mLine.ChangePriority();
-	//mLine2.ChangePriority();
-	//mLine3.ChangePriority();
-	//衝突処理を実行
-	//CCollisionManager::Get()->Collision(&mLine, COLLISIONRANGE);
-	//CCollisionManager::Get()->Collision(&mLine2, COLLISIONRANGE);
-	//CCollisionManager::Get()->Collision(&mLine3, COLLISIONRANGE);
+	mColSphereHead.ChangePriority();
+	mColSphereBody.ChangePriority();
 
-	CCollisionManager::Get()->Collision(&mCollider, COLLISIONRANGE);
+	//衝突処理を実行
+	CCollisionManager::Get()->Collision(&mColSphereHead, COLLISIONRANGE); 
+	CCollisionManager::Get()->Collision(&mColSphereBody, COLLISIONRANGE); 
 }
 
 void CXPlayer::Render()

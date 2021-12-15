@@ -1,6 +1,3 @@
-﻿  CEnemy.cpp
-C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CEnemy.cpp(75,17): warning C4552: '-': 式の結果が使用されていません
-  CTrash.cpp
-  CXPlayer.cpp
-  コードを生成中...
+﻿  CEnemy2.cpp
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CEnemy2.cpp(77,17): warning C4552: '-': 式の結果が使用されていません
   GameProgramming.vcxproj -> C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\Debug\GameProgramming.exe

@@ -72,7 +72,7 @@ void CTaskManager::Update() {
 
 		//mEnabled‚ªfalse‚È‚çíœ
 		if (del->mEnabled == false) {
-			delete del;
+			//delete del;
 		}
 
 	}

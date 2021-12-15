@@ -21,7 +21,6 @@ public:
 
 	//デフォルトコンストラクタ
 	CXPlayer();
-	CCollider mCollider;
 	static CXPlayer* spThis;
 	//衝突処理
 	void Collision(CCollider* m, CCollider* o);

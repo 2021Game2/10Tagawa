@@ -46,7 +46,7 @@ void CCollisionManager::Collision(CCollider *c, int range) {
 	CCollider *task = (CCollider*)mHead.mpNext;
 	//”ÍˆÍ‚Ü‚Å“Ç‚Ý”ò‚Î‚µ
 	while (task->mpNext) {
-		if (task->mPriority <= c->mPriority + range)
+		if (c->mPriority <= task->mPriority + range)
 		{
 			break;
 		}
@@ -55,7 +55,7 @@ void CCollisionManager::Collision(CCollider *c, int range) {
 	}
 	//ÅŒã‚Ü‚Å‚«‚½‚çI—¹‚·‚é
 	while (task->mpNext) {
-		if (task->mPriority <= c->mPriority - range)
+		if (c->mPriority <= task->mPriority - range)
 		{
 			break;
 		}

@@ -8,16 +8,17 @@
 #include <math.h>
 
 #include "CEffect.h"
-#define G -1	//重力
-#define VJ0 10	//ジャンプ力
-#define HP 10	//耐久値
-
+#define G -0.5	//重力
+#define VJ0 16	//ジャンプ力
+#define HP 10	//HP
+#define INITIALIZE 0	//初期化
 
 bool CXPlayer::mJumping;
 
 CXPlayer::CXPlayer()
 	: mColSphereBody(this, nullptr, CVector(), 0.5f)
 	, mColSphereHead(this, nullptr, CVector(0.0f, 5.0f, -3.0f), 0.5f)
+
 	, mJump(0)
 	, mJflag(false)
 	, mCount(0)
@@ -96,7 +97,7 @@ void CXPlayer::Update()
 		SideVec.Normalize();
 		FrontVec.Normalize();
 
-		float speed = 0.5f;
+		float speed = 0.4f;
 		CVector Move(0, 0, 0);
 
 
@@ -121,35 +122,46 @@ void CXPlayer::Update()
 			//			mPosition += CVector(0.0f, 0.0f, 0.1f) * mMatrixRotate;
 		}
 
+
 		//if (CKey::Push('Q'))
 		//{
-		//	Move += FrontVec;
-		//				mPosition += CVector(0.0f, 0.1f, 0.0f) * mMatrixRotate;
+		//	//Move += FrontVec;
+		//				mPosition += CVector(0.0f, 0.05f, 0.0f) * mMatrixRotate;
 		//}
 		//else if (CKey::Push('X'))
 		//{
 		//	Move -= FrontVec;
-		//				mPosition += CVector(0.0f, -0.1f, 0.0f) * mMatrixRotate;
+		//				mPosition += CVector(0.0f, -0.05f, 0.0f) * mMatrixRotate;
 		//}
 
 
 
-		if (CKey::Push(' '))
-		{
-			//位置調整
-			CVector tpos = mPosition;
-			tpos.mY += 2.0f;
-			//new CEffect(tpos, 2.0f, 0.0f, "exp.tga", 4, 4, 2);
-			mVj = VJ0;
-			mJflag = true;
-			mJumping = true;
+		//if ()
+		//{
+		//	//位置調整
+		//	CVector tpos = mPosition;
+		//	tpos.mY += 2.0f;
+		//	mVj = VJ0;
+		//	mJflag = true;
+		//	mJumping = true;
 
-			ChangeAnimation(3, true, 30);
-		}else if (Move.Length() != 0.0f){
-			ChangeAnimation(1, true, 60);
-		}else {
-			ChangeAnimation(0, true, 60);
-		}
+		//	ChangeAnimation(3, true, 30);
+		//}else if (Move.Length() != 0.0f){
+		//	ChangeAnimation(1, true, 60);
+		//}else {
+		//	ChangeAnimation(0, true, 60);
+		//}
+		//mPosition.mY += mVj;
+		//if (mPosition.mY > mJump) {
+		//	mVj += G;
+		//}
+		//else {
+		//	mVj = INITIALIZE;
+		//	mJump = INITIALIZE;
+		//	mJflag = false;
+		//	mJumping = false;
+		//}
+
 
 		//移動量正規化　これをしないと斜め移動が早くなってしまうので注意
 		//ジャンプ時などはY軸を正規化しないよう注意

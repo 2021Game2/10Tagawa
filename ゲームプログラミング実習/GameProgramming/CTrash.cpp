@@ -50,31 +50,29 @@ void CTrash::Collision(CCollider* m, CCollider* o) {
 	{
 		return;
 	}
-	//相手のコライダタイプの判定
-	switch (o->mType)
-	{
-	case CCollider::ESPHERE: //球コライダの時
-//		if (o->mpParent->mTag == EENEMY)
-//			return;
-		//コライダのmとyが衝突しているか判定
-		if (CCollider::Collision(m, o)) {
-			if (o->mpParent->mTag == EPLAYER)
+	//自身のコライダタイプの判定
+	switch (m->mType) {
+	case CCollider::ESPHERE:
+		//相手のコライダが球コライダの時
+		CVector adjust;
+		if (o->mType == CCollider::ESPHERE) {
+			if (CCollider::Collision(m, o))
 			{
+				CScore::mScore += SCORE;
 				
 			}
 		}
-		break;
-	case CCollider::ETRIANGLE: //三角コライダの時
-		CVector adjust; //調整値
-		//三角コライダと球コライダの衝突判定
-		if (CCollider::CollisionTriangleSphere(o, m, &adjust))
-		{	//衝突しない位置まで戻す
+		//相手のコライダが三角コライダの時
+		else if (o->mType == CCollider::ETRIANGLE) {
+			CVector adjust;//調整用ベクトル
+			//三角形と球の衝突判定
+			CCollider::CollisionTriangleSphere(o, m, &adjust);
 			mPosition = mPosition + adjust;
+			//行列の更新
+			CTransform::Update();
 		}
 		break;
 	}
-
-	//mCollider1.mpMatrix = &mpCombinedMatrix[1];
 }
 
 void CTrash::TaskCollision()

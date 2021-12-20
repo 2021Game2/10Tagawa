@@ -58,7 +58,7 @@ void CSceneGame::Init()
 
 	//キャラクターにモデルを設定
 	mPlayer.Init(&CRes::sModelX);
-	mPlayer.mPosition = CVector(-10, 0, -50);
+	mPlayer.mPosition = CVector(0, 0, 0);
 
 	mModel.Load("resorce\\sphere.obj","resorce\\sphere.mtl");
 	mModel2.Load("resorce\\sea OBJ.obj", "resorce\\sea MTL.mtl");
@@ -68,53 +68,68 @@ void CSceneGame::Init()
 	mModel6.Load("resorce\\rock3.obj", "resorce\\rock3.mtl");
 	mModel7.Load("resorce\\SeaWeed.obj", "resorce\\SeaWeed.mtl");
 
+
+
 						//(右左 上下 前後ろ)
-	new CEnemy(&mModel, CVector(0, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CEnemy(&mModel, CVector(5, 4, 5), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CEnemy(&mModel, CVector(20, 0, 20), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CEnemy(&mModel, CVector(-20, 2, 10), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CEnemy(&mModel, CVector(20, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CEnemy(&mModel, CVector(0, 12, -100), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CEnemy(&mModel, CVector(50, 12, -100), CVector(0, 0, 0), CVector(5, 5, 5));
+
+	new CEnemy(&mModel, CVector(80, 4, 80), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CEnemy(&mModel, CVector(80, 9, 50), CVector(0, 0, 0), CVector(5, 5, 5));
+
+	new CEnemy(&mModel, CVector(-20, 20, -50), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CEnemy(&mModel, CVector(20, 10, -50), CVector(0, 0, 0), CVector(5, 5, 5));
+
+	new CEnemy(&mModel, CVector(40, 15, 50), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CEnemy(&mModel, CVector(-40, 5, 50), CVector(0, 0, 0), CVector(5, 5, 5));
+
+	new CEnemy(&mModel, CVector(-200, 5, 200), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CEnemy(&mModel, CVector(-100, 5, -50), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CEnemy(&mModel, CVector(80, 4, -100), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CEnemy(&mModel, CVector(-20, 10, -250), CVector(0, 0, 0), CVector(5, 5, 5));
 
 	//球　上下
-	new CEnemy2(&mModel, CVector(-10, 0, -20), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CEnemy2(&mModel, CVector(-20, 5, -10), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CEnemy2(&mModel, CVector(20, 5, -10), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CEnemy2(&mModel, CVector(10, 0, -10), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CEnemy2(&mModel, CVector(-60, 0, 120), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(0, 5, 65), CVector(0, 0, 0), CVector(8, 8, 8));	
+	new CEnemy2(&mModel, CVector(100, 0, 90), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(-150, 8, 20), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(-10, 10, 120), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(10, 5, 250), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(200, 5, 110), CVector(0, 0, 0), CVector(8, 8, 8));
 
-	//ステージ
-	//new CSea(&mModel2, CVector(0, -3.3, 0), CVector(0, 0, 0), CVector(25, 25, 25));
+
+
 
 	//ゴミ袋
-	//new CTrash(&mModel3, CVector(2, 0, 0), CVector(0, 0, 0), CVector(1, 1, 1));
+	//new CTrash(&mModel3, CVector(2, 0, 100), CVector(0, 0, 0), CVector(1, 1, 1));
+
+	//右
+	new CRock4(&mModel4, CVector(0, 3, 0), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CRock4(&mModel4, CVector(50, 3, 0), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CRock4(&mModel4, CVector(100, 3, 0), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CRock4(&mModel4, CVector(150, 3, 0), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CRock4(&mModel4, CVector(200, 3, 0), CVector(0, 0, 0), CVector(5, 5, 5));
 
 
-	new CRock4(&mModel4, CVector(8, -1, -41.5), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CRock5(&mModel5, CVector(50, 1, 70), CVector(0, 0, 0), CVector(3, 3, 3));
+	new CSeaweed(&mModel7, CVector(50, 4, 70), CVector(0, 0, 0), CVector(2, 2, 2));
+
+	new CRock5(&mModel5, CVector(50, 0, 50), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CSeaweed(&mModel7, CVector(40, 3, 50), CVector(0, 0, 0), CVector(2, 2, 2));
 
 
-	new CRock5(&mModel5, CVector(-15, -1, 43), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CRock5(&mModel5, CVector(50, 0, 37), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CRock5(&mModel5, CVector(-38, 2, 33), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CRock5(&mModel5, CVector(-15.5, 0, -15), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CRock5(&mModel5, CVector(-36.5, 2, -25), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CRock5(&mModel5, CVector(-15, -2, -40), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CRock6(&mModel6, CVector(-25, 3, 60), CVector(0, 0, 0), CVector(15, 15, 15));
+	new CRock6(&mModel6, CVector(-50, 3, -100), CVector(0, 0, 0), CVector(10, 15, 15));
 
-
-	new CRock6(&mModel6, CVector(-55, 5, -55), CVector(0, 0, 0), CVector(15, 15, 15));
-	new CRock6(&mModel6, CVector(-55, 5, -30), CVector(0, 0, 0), CVector(15, 15, 15));
-	new CRock6(&mModel6, CVector(-57, 0, -5), CVector(0, 0, 0), CVector(15, 15, 15));
-	new CRock6(&mModel6, CVector(-55, 5, 10), CVector(0, 0, 0), CVector(15, 15, 15));
-	new CRock6(&mModel6, CVector(-52, 0, 35), CVector(0, 0, 0), CVector(15, 15, 15));
-	new CRock6(&mModel6, CVector(-50, 3, 60), CVector(0, 0, 0), CVector(15, 15, 15));
-
-
-
-	//new CSeaweed(&mModel7, CVector(3, 0, 6), CVector(0, 0, 0), CVector(3, 3, 3));
 
 	//背景モデルから三角コライダを生成
 	//親インスタンスと親行列はなし
 
 	//カメラ初期化
 	Camera.Init();
+
+	//ステージ
+//new CSea(&mModel2, CVector(0, -3.3, 0), CVector(0, 0, 0), CVector(25, 25, 25));
 
 }
 
@@ -139,9 +154,6 @@ void CSceneGame::Update() {
 
 	Camera.Update();
 
-	if (Time == 0) {
-		mFont.DrawString("GAME OVER", 400, 300, 32, 32);
-	}
 
 	//mJump.Play();
 //	mBillBoard.Update();
@@ -189,6 +201,10 @@ void CSceneGame::Render() {
 	mFont.DrawString("TIME", 725, 550, 10, 20);
 	sprintf(buf, "%d", Time/60);
 	mFont.DrawString(buf, 750, 500, 10, 20);
+
+	if (Time == 0) {
+		mFont.DrawString("GAME OVER", 400, 300, 32, 32);
+	}
 
 
 	//2Dの描画終了

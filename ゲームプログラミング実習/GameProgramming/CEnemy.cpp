@@ -16,7 +16,7 @@ int CEnemy::sCount = 0;	//インスタンス数
 //CEnemy(モデル, 位置, 回転, 拡縮)
 CEnemy::CEnemy(CModel *model, CVector position,
 	CVector rotation, CVector scale)
-: mCollider1(this, &mMatrix, CVector(0.0f, 0.5f, 0.0f), 2.0f)
+: mCollider1(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 5.2f)
 , mHp(HP)
 , mAttack(false)
 ,mCnt(30)
@@ -51,6 +51,7 @@ void CEnemy::Update() {
 
 			//エフェクト生成
 			new CEffect(mPosition, 5.0f, 5.0f, "exp.tga", 4, 4, 2);
+			mTag == EENEAT;
 
 		CTransform::Update();	//行列更新
 		return;	//呼び元へ戻す

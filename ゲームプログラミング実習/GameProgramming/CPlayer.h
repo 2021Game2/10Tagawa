@@ -17,11 +17,6 @@ public:
 
 	CCollider mColSphereBody;	//体
 	CCollider mColSphereHead;	//頭
-	float mVj; //ジャンプ用変数
-	int mJump; ///ジャンプ位置記憶
-
-	bool mJflag;	//ジャンプフラグ(falseなら可能,trueなら不可)
-	static bool CPlayer::mJumping;	//プレイヤージャンプ中フラグ
 
 	int mCount;
 	int mHp;	//ヒットポイント

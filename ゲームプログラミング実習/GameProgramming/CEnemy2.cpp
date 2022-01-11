@@ -105,13 +105,13 @@ void CEnemy2::Collision(CCollider* m, CCollider* o) {
 			if (CCollider::Collision(m, o))
 			{
 				if (o->mpParent->mTag == EPLAYER) {
-					//3•bŒã‚É”š”­
-					mCnt -= 1;
-					if (mCnt == 0) {
+					////1•bŒã‚É”š”­
+					//mCnt -= 1;
+					//if (mCnt == 0) {
 						mHp -= HP;
-						mCnt = 30;
-					}
-					return;
+					//	mCnt = 30;
+					//}
+					//return;
 					mEnabled = false;
 				}
 				if (o->mpParent->mTag == EROCK) {

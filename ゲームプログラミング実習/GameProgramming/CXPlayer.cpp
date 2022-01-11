@@ -9,28 +9,22 @@
 
 #include "CEffect.h"
 #define G -0.5	//重力
-#define VJ0 16	//ジャンプ力
 #define HP 10	//HP
 #define INITIALIZE 0	//初期化
 
-bool CXPlayer::mJumping;
 
 CXPlayer::CXPlayer()
 	: mColSphereBody(this, nullptr, CVector(), 0.5f)
 	, mColSphereHead(this, nullptr, CVector(0.0f, 5.0f, -3.0f), 0.5f)
 	, mColSphereFoot(this, nullptr, CVector(0.0f, -5.0f, 0.0f), 0.5f)
 
-	, mJump(0)
-	, mJflag(false)
 	, mCount(1)
 	, mHp(HP)
-
 
 {
 	//タグにプレイヤーを設定します
 	mTag = EPLAYER;
 
-	mJumping = false;
 
 }
 

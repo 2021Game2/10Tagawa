@@ -25,7 +25,6 @@ CPlayer *CPlayer::spThis = 0;
 
 #include "CEffect.h"
 #define G -0.5	//d—Í
-#define VJ0 16	//ƒWƒƒƒ“ƒv—Í
 #define HP 10	//HP
 #define INITIALIZE 0	//‰Šú‰»
 

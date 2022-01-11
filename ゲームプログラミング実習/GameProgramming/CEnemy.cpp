@@ -16,7 +16,7 @@ int CEnemy::sCount = 0;	//インスタンス数
 //CEnemy(モデル, 位置, 回転, 拡縮)
 CEnemy::CEnemy(CModel *model, CVector position,
 	CVector rotation, CVector scale)
-: mCollider1(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 5.2f)
+: mCollider1(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 10.2f)
 , mHp(HP)
 , mAttack(false)
 ,mCnt(30)
@@ -64,7 +64,7 @@ void CEnemy::Update() {
 
 	for (i = 0; i <= 1; i++)	//1回繰り返す
 	{
-		ran = ((rand() % (max - min + 1)) / 4.0 - 0.25)/10; //乱数の生成
+		ran = ((rand() % (max - min + 1)) / 4.0 - 0.25)/5; //乱数の生成
 
 		//mPosition.mY += ran;
 		mPosition.mX += ran;
@@ -84,59 +84,39 @@ void CEnemy::Update() {
 
 //衝突処理
 //Collision(コライダ1, コライダ2)
-void CEnemy::Collision(CCollider *m, CCollider *o) {
+void CEnemy::Collision(CCollider* m, CCollider* o) {
 	//相手がサーチの時は戻る
-	if (o->mTag == CCollider::ESEARCH)
-	{
-		return;
-	}
+	//if (o->mTag == CCollider::ESEARCH)
+	//{
+	//	return;
+	//}
 	//相手のコライダタイプの判定
-	switch (o->mType)
-	{	
-	case CCollider::ESPHERE: //球コライダの時
-//		if (o->mpParent->mTag == EENEMY)
-//			return;
-		//コライダのmとyが衝突しているか判定
-		if (CCollider::Collision(m, o)) {
-			if (o->mpParent == nullptr)
+	switch (m->mType) {
+	case CCollider::ESPHERE:
+		//相手のコライダが球コライダの時
+		CVector adjust;
+		if (o->mType == CCollider::ESPHERE) {
+			if (CCollider::Collision(m, o))
 			{
-				return;
-			}
-			if (o->mpParent->mTag == EPLAYER) 
-			{
-				//3秒後に爆発
-				//mCnt -=1;
-				//if (mCnt == 0) {
-					mHp -= HP;
-				//	mCnt = 30;
-				//}
-				//return;
+				if (o->mpParent->mTag == EPLAYER) {
+					mPosition = mPosition + adjust;
+
+					//3秒後に爆発
+					mCnt -= 1;
+					if (mCnt == 0) {
+						mHp -= HP;
+						mCnt = 30;
+					}
+					return;
 					mEnabled = false;
-
-			}
-
-		//else {
-		//		mCnt = 30;
-		//		mHp = 10;
-		//	}
-		}
-		break;
-	case CCollider::ETRIANGLE: //三角コライダの時
-		CVector adjust; //調整値
-		//三角コライダと球コライダの衝突判定
-		if (CCollider::CollisionTriangleSphere(o, m, &adjust))
-		{	//衝突しない位置まで戻す
-			mPosition = mPosition + adjust;
-			//撃破で地面に衝突すると無効
-			if (mHp <= 0)
-			{
-				mEnabled = false;
+				}
+				if (o->mpParent->mTag == EROCK) {
+					mPosition = mPosition + adjust;
+				}
 			}
 		}
 		break;
 	}
-
-	//mCollider1.mpMatrix = &mpCombinedMatrix[1];
 }
 
 

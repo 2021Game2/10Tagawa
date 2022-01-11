@@ -20,14 +20,18 @@
 
 CPlayer *CPlayer::spThis = 0;
 
-#define HP 10	//耐久値
+#define _USE_MATH_DEFINES
+#include <math.h>
+
+#include "CEffect.h"
+#define G -0.5	//重力
+#define VJ0 16	//ジャンプ力
+#define HP 10	//HP
+#define INITIALIZE 0	//初期化
 
 
-
-CPlayer::CPlayer()
-//: mLine(this, &mMatrix, CVector(0.0f, 0.0f, -14.0f), CVector(0.0f, 0.0f, 17.0f))
-//, mLine2(this, &mMatrix, CVector(0.0f, 5.0f, -8.0f), CVector(0.0f, -3.0f, -8.0f))
-//, mLine3(this, &mMatrix, CVector(9.0f, 0.0f, -8.0f), CVector(-9.0f, 0.0f, -8.0f))
+CPlayer::CPlayer(CModel* model, CVector position,
+	CVector rotation, CVector scale)
 : mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
 , mCount(0)
 , mHp(HP)
@@ -57,35 +61,13 @@ void CPlayer::Update() {
 		//Z軸方向に1進んだ値を回転移動させる
 		mPosition = CVector(0.0f, 0.0f, 1.0f) * mMatrix;
 	}
-	//Sキー入力で上向き
-	if (CKey::Push('S')) {
-		//X軸の回転値を減算
-		mRotation.mX -= 1;
-	}
-	//Wキー入力で上向き
-	if (CKey::Push('W')) {
-		//X軸の回転値を加算
-		mRotation.mX += 1;
-	}
 
-	//Qキー入力で上昇
-	if (CKey::Push('Q')) {
-		mRotation.mZ += 1;
-	}
-	//Xキー入力で下降
-	if (CKey::Push('X')) {
-		mRotation.mZ -= 1;
-	}
+
 
 
 	if (mCount > 0)
 	{
 		mCount--;
-	}
-
-	//スペースキー入力で弾発射
-	if (CKey::Push(VK_SPACE)) {
-
 	}
 
 	mPosition.mY -= 0.03f;
@@ -102,18 +84,6 @@ void CPlayer::Collision(CCollider *m, CCollider *o) {
 	}
 	//自身のコライダタイプの判定
 	switch (m->mType) {
-	case CCollider::ETRIANGLE://線分コライダ
-		//相手のコライダが三角コライダの時
-		if (o->mType == CCollider::ETRIANGLE) {
-			CVector adjust;//調整用ベクトル
-			//三角形と線分の衝突判定
-			CCollider::CollisionTriangleLine(o, m, &adjust);
-			//位置の更新(mPosition + adjust)
-			mPosition = mPosition - adjust * -1;
-			//行列の更新
-			CTransform::Update();
-		}
-		break;
 	case CCollider::ESPHERE:
 		//相手のコライダが球コライダの時
 		CVector adjust;
@@ -124,14 +94,28 @@ void CPlayer::Collision(CCollider *m, CCollider *o) {
 					mHp -= HP;
 					if (mHp == 0) {
 						mEnabled = false;
-
 					}
-				}	
-
+				}
 				if (o->mpParent->mTag == EROCK) {
 					mPosition = mPosition + adjust;
 				}
+				if (o->mpParent->mTag == EENEMY) {
+					mPosition = mPosition + adjust;
+				}
+
 			}
+		}
+		//相手のコライダが三角コライダの時
+		else if (o->mType == CCollider::ETRIANGLE) {
+			CVector adjust;//調整用ベクトル
+			//三角形と球の衝突判定
+			CCollider::CollisionTriangleSphere(o, m, &adjust);
+
+			//位置の更新(mPosition + adjust)
+
+			mPosition = mPosition + adjust;
+			//行列の更新
+			CTransform::Update();
 		}
 		break;
 	}
@@ -142,15 +126,12 @@ void CPlayer::Collision(CCollider *m, CCollider *o) {
 void CPlayer::TaskCollision()
 {
 	//コライダの優先度変更
-	//mLine.ChangePriority();
-	//mLine2.ChangePriority();
-	//mLine3.ChangePriority();
-	mCollider.ChangePriority();
+	mColSphereHead.ChangePriority();
+	mColSphereBody.ChangePriority();
+
 	//衝突処理を実行
-	//CCollisionManager::Get()->Collision(&mLine, COLLISIONRANGE);
-	//CCollisionManager::Get()->Collision(&mLine2, COLLISIONRANGE);
-	//CCollisionManager::Get()->Collision(&mLine3, COLLISIONRANGE);
-	CCollisionManager::Get()->Collision(&mCollider, COLLISIONRANGE);
+	CCollisionManager::Get()->Collision(&mColSphereHead, COLLISIONRANGE);
+	CCollisionManager::Get()->Collision(&mColSphereBody, COLLISIONRANGE);
 }
 
 void CPlayer::Render()

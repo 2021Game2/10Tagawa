@@ -34,6 +34,8 @@
 
 #include "CScore.h"
 
+#include "CPlayer.h"
+
 //CMatrix Matrix;
 
 int Time = 30 * 60;
@@ -57,7 +59,7 @@ void CSceneGame::Init()
 
 
 	//キャラクターにモデルを設定
-	mPlayer.Init(&CRes::sModelX);
+	//mPlayer.Init(&CRes::sModelX);
 	mPlayer.mPosition = CVector(0, 0, 0);
 
 	mModel.Load("resorce\\sphere.obj","resorce\\sphere.mtl");
@@ -67,35 +69,58 @@ void CSceneGame::Init()
 	mModel5.Load("resorce\\rock2.obj", "resorce\\rock2.mtl");
 	mModel6.Load("resorce\\rock3.obj", "resorce\\rock3.mtl");
 	mModel7.Load("resorce\\SeaWeed.obj", "resorce\\SeaWeed.mtl");
+	mModel8.Load("resorce\\Submarine.obj", "resorce\\Submarine.mtl");
+
+	new CPlayer(&mModel, CVector(0, 12, -100), CVector(0, 0, 0), CVector(8, 8, 8));
 
 
 
 						//(右左 上下 前後ろ)
-	new CEnemy(&mModel, CVector(0, 12, -100), CVector(0, 0, 0), CVector(5, 5, 5));
-	new CEnemy(&mModel, CVector(50, 12, -100), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CEnemy(&mModel, CVector(0, 12, -100), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy(&mModel, CVector(50, 12, -100), CVector(0, 0, 0), CVector(8, 8, 8));
 
-	new CEnemy(&mModel, CVector(80, 4, 80), CVector(0, 0, 0), CVector(5, 5, 5));
-	new CEnemy(&mModel, CVector(80, 9, 50), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CEnemy(&mModel, CVector(80, 4, 80), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy(&mModel, CVector(80, 9, 50), CVector(0, 0, 0), CVector(8, 8, 8));
 
-	new CEnemy(&mModel, CVector(-20, 20, -50), CVector(0, 0, 0), CVector(5, 5, 5));
-	new CEnemy(&mModel, CVector(20, 10, -50), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CEnemy(&mModel, CVector(-20, 20, -50), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy(&mModel, CVector(20, 10, -50), CVector(0, 0, 0), CVector(8, 8, 8));
 
-	new CEnemy(&mModel, CVector(40, 15, 50), CVector(0, 0, 0), CVector(5, 5, 5));
-	new CEnemy(&mModel, CVector(-40, 5, 50), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CEnemy(&mModel, CVector(40, 15, 50), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy(&mModel, CVector(-40, 5, 50), CVector(0, 0, 0), CVector(8, 8, 8));
 
-	new CEnemy(&mModel, CVector(-200, 5, 200), CVector(0, 0, 0), CVector(5, 5, 5));
-	new CEnemy(&mModel, CVector(-100, 5, -50), CVector(0, 0, 0), CVector(5, 5, 5));
-	new CEnemy(&mModel, CVector(80, 4, -100), CVector(0, 0, 0), CVector(5, 5, 5));
-	new CEnemy(&mModel, CVector(-20, 10, -250), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CEnemy(&mModel, CVector(-200, 5, 200), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy(&mModel, CVector(-260, 0, 180), CVector(0, 0, 0), CVector(8, 8, 8));
+
+	new CEnemy(&mModel, CVector(-100, 5, -50), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy(&mModel, CVector(100, 5, -50), CVector(0, 0, 0), CVector(8, 8, 8));
+
+	new CEnemy(&mModel, CVector(80, 4, -100), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy(&mModel, CVector(80, 4, -150), CVector(0, 0, 0), CVector(8, 8, 8));
+
+	new CEnemy(&mModel, CVector(-20, 10, -250), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy(&mModel, CVector(20, 10, -250), CVector(0, 0, 0), CVector(8, 8, 8));
 
 	//球　上下
 	new CEnemy2(&mModel, CVector(-60, 0, 120), CVector(0, 0, 0), CVector(8, 8, 8));
-	new CEnemy2(&mModel, CVector(0, 5, 65), CVector(0, 0, 0), CVector(8, 8, 8));	
+	new CEnemy2(&mModel, CVector(60, 10, 120), CVector(0, 0, 0), CVector(8, 8, 8));
+
+	new CEnemy2(&mModel, CVector(0, 5, 65), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(10, 0, 30), CVector(0, 0, 0), CVector(8, 8, 8));
+
 	new CEnemy2(&mModel, CVector(100, 0, 90), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(-100, 10, 90), CVector(0, 0, 0), CVector(8, 8, 8));
+
 	new CEnemy2(&mModel, CVector(-150, 8, 20), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(-15, 8, 20), CVector(0, 0, 0), CVector(8, 8, 8));
+
 	new CEnemy2(&mModel, CVector(-10, 10, 120), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(10, 1, 12), CVector(0, 0, 0), CVector(8, 8, 8));
+
 	new CEnemy2(&mModel, CVector(10, 5, 250), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(10, 12, 250), CVector(0, 0, 0), CVector(8, 8, 8));
+
 	new CEnemy2(&mModel, CVector(200, 5, 110), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(20, 5, 11), CVector(0, 0, 0), CVector(8, 8, 8));
 
 
 
@@ -103,7 +128,7 @@ void CSceneGame::Init()
 	//ゴミ袋
 	//new CTrash(&mModel3, CVector(2, 0, 100), CVector(0, 0, 0), CVector(1, 1, 1));
 
-	//右
+	
 	new CRock4(&mModel4, CVector(0, 3, 0), CVector(0, 0, 0), CVector(5, 5, 5));
 	new CRock4(&mModel4, CVector(50, 3, 0), CVector(0, 0, 0), CVector(5, 5, 5));
 	new CRock4(&mModel4, CVector(100, 3, 0), CVector(0, 0, 0), CVector(5, 5, 5));
@@ -203,7 +228,7 @@ void CSceneGame::Render() {
 	mFont.DrawString(buf, 750, 500, 10, 20);
 
 	if (Time == 0) {
-		mFont.DrawString("GAME OVER", 400, 300, 32, 32);
+		mFont.DrawString("GAME OVER", 200, 150, 15, 15);
 	}
 
 

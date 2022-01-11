@@ -27,8 +27,10 @@ public:
 	CModel mModel5;
 	CModel mModel6;
 	CModel mModel7;
+	CModel mModel8;
 
 	CColliderTriangle mColliderTriangle;
+
 
 	//キャラクタのインスタンス
 	CXPlayer mPlayer;

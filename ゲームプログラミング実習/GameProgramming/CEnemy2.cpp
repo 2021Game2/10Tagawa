@@ -57,7 +57,8 @@ void CEnemy2::Update() {
 		CTransform::Update();	//行列更新
 		//return;	//呼び元へ戻す
 
-		
+		mEnabled = false;
+
 	}
 
 	int i;
@@ -98,45 +99,42 @@ void CEnemy2::Collision(CCollider* m, CCollider* o) {
 	switch (o->mType)
 	{
 	case CCollider::ESPHERE: //球コライダの時
-		//if (o->mpParent->mTag == EENEMY)
-		//	return;
-		//コライダのmとyが衝突しているか判定
-		if (CCollider::Collision(m, o)) {
-			if (o->mpParent->mTag == EPLAYER)
+		//相手のコライダが球コライダの時
+		CVector adjust;
+		if (o->mType == CCollider::ESPHERE) {
+			if (CCollider::Collision(m, o))
 			{
-				//2秒後に爆発
-				//mCnt -= 1;
-				//if (mCnt == 0) {
-					mHp -= HP;
-				//	mCnt = 20;
-				//}
-				//return;
-					//mEnabled = false;
-
-			}
-
-			//else {
-			//	mCnt = 20;
-			//	mHp = 10;
-			//}
-		}
-		break;
-	case CCollider::ETRIANGLE: //三角コライダの時
-		CVector adjust; //調整値
-		//三角コライダと球コライダの衝突判定
-		if (CCollider::CollisionTriangleSphere(o, m, &adjust))
-		{	//衝突しない位置まで戻す
-			mPosition = mPosition + adjust;
-			//撃破で地面に衝突すると無効
-			if (mHp <= 0)
-			{
-				mEnabled = false;
+				if (o->mpParent->mTag == EPLAYER) {
+					//3秒後に爆発
+					mCnt -= 1;
+					if (mCnt == 0) {
+						mHp -= HP;
+						mCnt = 30;
+					}
+					return;
+					mEnabled = false;
+				}
+				if (o->mpParent->mTag == EROCK) {
+					mPosition = mPosition + adjust;
+				}
 			}
 		}
-		break;
+		//case CCollider::ETRIANGLE: //三角コライダの時
+		//	//三角コライダと球コライダの衝突判定
+		//	if (CCollider::CollisionTriangleSphere(o, m, &adjust))
+		//	{	//衝突しない位置まで戻す
+		//		mPosition = mPosition + adjust;
+		//		//撃破で地面に衝突すると無効
+		//		if (mHp <= 0)
+		//		{
+		//			mEnabled = false;
+		//		}
+		//	}
+		//	break;
+		//}
+
+		//mCollider1.mpMatrix = &mpCombinedMatrix[1];
 	}
-
-	//mCollider1.mpMatrix = &mpCombinedMatrix[1];
 }
 
 

@@ -18,11 +18,13 @@ bool CXPlayer::mJumping;
 CXPlayer::CXPlayer()
 	: mColSphereBody(this, nullptr, CVector(), 0.5f)
 	, mColSphereHead(this, nullptr, CVector(0.0f, 5.0f, -3.0f), 0.5f)
+	, mColSphereFoot(this, nullptr, CVector(0.0f, -5.0f, 0.0f), 0.5f)
 
 	, mJump(0)
 	, mJflag(false)
-	, mCount(0)
+	, mCount(1)
 	, mHp(HP)
+
 
 {
 	//タグにプレイヤーを設定します
@@ -38,6 +40,7 @@ void CXPlayer::Init(CModelX* model)
 	//合成行列の設定
 	mColSphereBody.mpMatrix = &mpCombinedMatrix[9];
 	mColSphereHead.mpMatrix = &mpCombinedMatrix[12];
+	mColSphereFoot.mpMatrix = &mpCombinedMatrix[15];
 
 	mRotation.mY = 0.01f;
 }
@@ -91,13 +94,13 @@ void CXPlayer::Update()
 		CVector SideVec = Camera.GetMat().GetXVec();
 		CVector FrontVec = Camera.GetMat().GetZVec();
 		//高さ移動はカットする
-		SideVec.mY = 0.0f;
-		FrontVec.mY = 0.0f;
+		//SideVec.mY = 0.0f;
+		//FrontVec.mY = 0.0f;
 		//正規化する
 		SideVec.Normalize();
 		FrontVec.Normalize();
 
-		float speed = 0.4f;
+		float speed = 0.3f;
 		CVector Move(0, 0, 0);
 
 
@@ -111,11 +114,13 @@ void CXPlayer::Update()
 			//			mRotation.mY -= 2.0f;
 			Move += SideVec;
 		}
+
 		if (CKey::Push('W'))
 		{
 			Move += FrontVec;
 			//			mPosition += CVector(0.0f, 0.0f, 0.1f) * mMatrixRotate;
 		}
+
 		else if (CKey::Push('S'))
 		{
 			Move -= FrontVec;
@@ -190,9 +195,9 @@ void CXPlayer::Update()
 
 		//座標移動
 		mPosition += Move;
-
-
 	}
+
+
 	//注視点設定
 	Camera.SetTarget(mPosition);
 
@@ -223,6 +228,10 @@ void CXPlayer::Collision(CCollider* m, CCollider* o) {
 				if (o->mpParent->mTag == EROCK) {
 					mPosition = mPosition + adjust;
 				}
+				if (o->mpParent->mTag == EENEMY) {
+					mPosition = mPosition + adjust;
+				}
+
 			}
 		}
 		//相手のコライダが三角コライダの時

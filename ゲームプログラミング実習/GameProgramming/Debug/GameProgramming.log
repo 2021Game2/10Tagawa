@@ -1,2 +1,8 @@
-﻿  CPlayer.cpp
+﻿  CEnemy.cpp
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CEnemy.cpp(54,9): warning C4553: '==': 式の結果が使用されていません。'=' を意図していますか?
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CEnemy.cpp(76,17): warning C4552: '-': 式の結果が使用されていません
+  CEnemy2.cpp
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CEnemy2.cpp(78,17): warning C4552: '-': 式の結果が使用されていません
+  CXPlayer.cpp
+  コードを生成中...
   GameProgramming.vcxproj -> C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\Debug\GameProgramming.exe

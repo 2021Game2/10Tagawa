@@ -11,6 +11,8 @@ public:
 	//コライダ
 	CCollider mCollider1;
 
+
+
 	//コンストラクタ
 	//CEnemy(モデル, 位置, 回転, 拡縮)
 	CTrash(CModel* model, CVector position, CVector rotation, CVector scale);

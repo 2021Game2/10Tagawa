@@ -58,9 +58,6 @@ void CSceneGame::Init()
 	CRes::sModelX.Load(MODEL_FILE);
 
 
-	//キャラクターにモデルを設定
-	//mPlayer.Init(&CRes::sModelX);
-	mPlayer.mPosition = CVector(0, 0, 0);
 
 	mModel.Load("resorce\\sphere.obj","resorce\\sphere.mtl");
 	mModel2.Load("resorce\\sea OBJ.obj", "resorce\\sea MTL.mtl");
@@ -69,9 +66,9 @@ void CSceneGame::Init()
 	mModel5.Load("resorce\\rock2.obj", "resorce\\rock2.mtl");
 	mModel6.Load("resorce\\rock3.obj", "resorce\\rock3.mtl");
 	mModel7.Load("resorce\\SeaWeed.obj", "resorce\\SeaWeed.mtl");
-	mModel8.Load("resorce\\Submarine.obj", "resorce\\Submarine.mtl");
+	mModel8.Load("resorce\\Submarine.obj", "resorce\\Submarine1.mtl");
 
-	new CPlayer(&mModel, CVector(0, 12, -100), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CPlayer(&mModel8, CVector(200, 100, 100), CVector(0, 0, 0), CVector(0.0008, 0.0008, 0.0008));
 
 
 
@@ -126,7 +123,10 @@ void CSceneGame::Init()
 
 
 	//ゴミ袋
-	//new CTrash(&mModel3, CVector(2, 0, 100), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CTrash(&mModel3, CVector(0,100, 0), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CTrash(&mModel3, CVector(50, 100, 0), CVector(0, 0, 0), CVector(3, 3, 3));
+	new CTrash(&mModel3, CVector(100, 100, 0), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CTrash(&mModel3, CVector(150, 100, 0), CVector(0, 0, 0), CVector(5, 5, 5));
 
 	
 	new CRock4(&mModel4, CVector(0, 3, 0), CVector(0, 0, 0), CVector(5, 5, 5));

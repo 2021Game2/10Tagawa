@@ -32,8 +32,6 @@ public:
 	CColliderTriangle mColliderTriangle;
 
 
-	//キャラクタのインスタンス
-	CXPlayer mPlayer;
 
 	char buf[10];
 

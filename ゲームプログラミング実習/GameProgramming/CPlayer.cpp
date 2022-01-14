@@ -17,6 +17,8 @@
 
 #include "CEnemy.h"
 
+#include "CCamera.h"
+
 
 CPlayer *CPlayer::spThis = 0;
 
@@ -41,27 +43,90 @@ CPlayer::CPlayer(CModel* model, CVector position,
 	//テクスチャファイルの読み込み（1行64列）
 	mText.LoadTexture("FontWhite.tga", 1, 64);
 
-
+	mpModel = model;
 }
 
 //更新処理
 void CPlayer::Update() {
+
+	//カメラの左右と前後のベクトルを取得
+	CVector SideVec = Camera.GetMat().GetXVec();
+	CVector FrontVec = Camera.GetMat().GetZVec();
+	//高さ移動はカットする
+	//SideVec.mY = 0.0f;
+	//FrontVec.mY = 0.0f;
+	//正規化する
+	SideVec.Normalize();
+	FrontVec.Normalize();
+
+
+	float speed = 0.3f;
+	CVector Move(0, 0, 0);
+
+
+
 	//Aキー入力で回転
 	if (CKey::Push('A')) {
 		//Y軸の回転値を増加
-		mRotation.mY += 1;
+		//mPosition.mX += 1;
+		Move -= SideVec;
+
 	}
 	if (CKey::Push('D')) {
 		//Y軸の回転値を増加
-		mRotation.mY -= 1;
+		//mPosition.mX -= 1;
+		Move += SideVec;
+
 	}
+	//Wキー入力で回転
+	if (CKey::Push('W')) {
+		//Y軸の回転値を増加
+		//mPosition.mY += 1;
+		Move += FrontVec;
+
+	}
+	if (CKey::Push('S')) {
+		//Y軸の回転値を増加
+		//mPosition.mY -= 1;
+		Move -= FrontVec;
+
+	}
+
 	//上矢印キー入力で前進
 	if (CKey::Push(VK_UP)) {
 		//Z軸方向に1進んだ値を回転移動させる
 		mPosition = CVector(0.0f, 0.0f, 1.0f) * mMatrix;
 	}
+	//移動量正規化　これをしないと斜め移動が早くなってしまうので注意
+//ジャンプ時などはY軸を正規化しないよう注意
+	Move.Normalize();
+	//平行移動量
+	Move = Move * speed;
 
 
+	//普通に3次元ベクトル計算で算出したほうが正確だが計算量を懸念する場合は擬似計算で軽量化
+	//擬似ベクトル計算
+	Check tCheck = CUtil::GetCheck2D(Move.mX, Move.mZ, 0, 0, mRotation.mY * (M_PI / 180.0f));
+
+	//回転速度　degreeに直す
+	float turnspeed = (180.0f / M_PI) * 0.5f;
+
+	//急な振り返りを抑制
+	if (tCheck.turn > 1.5f) tCheck.turn = 1.5f;
+
+	//移動方向へキャラを向かせる
+	if (tCheck.cross > 0.0f) {
+		mRotation.mY += tCheck.turn * turnspeed;
+	}
+	if (tCheck.cross < 0.0f) {
+		mRotation.mY -= tCheck.turn * turnspeed;
+	}
+
+	//座標移動
+	mPosition += Move;
+
+
+	mPosition += Move;
 
 
 	if (mCount > 0)
@@ -69,7 +134,10 @@ void CPlayer::Update() {
 		mCount--;
 	}
 
-	mPosition.mY -= 0.03f;
+	//mPosition.mY -= 0.03f;
+
+	Camera.SetTarget(mPosition);
+
 
 	//CTransformの更新
 	CTransform::Update();
@@ -90,7 +158,7 @@ void CPlayer::Collision(CCollider *m, CCollider *o) {
 			if (CCollider::Collision(m, o))
 			{
 				if (o->mpParent->mTag == EENEMY) {
-					mHp -= HP;
+					mHp -= 2;
 					if (mHp == 0) {
 						mEnabled = false;
 					}

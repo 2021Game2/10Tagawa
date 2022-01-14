@@ -13,6 +13,7 @@ CTrash::CTrash(CModel* model, CVector position,
 	: mCollider1(this, &mMatrix, CVector(0.5f, 0.5f, 0.0f), 0.5f)
 {
 
+
 	mTag = EITEM;
 
 	//モデル、位置、回転、拡縮を設定する
@@ -32,7 +33,10 @@ CTrash::CTrash(CModel* model, CVector position,
 void CTrash::Update() {
 	mTag = EENEAT;
 
-	CScore::mScore += SCORE;
+
+
+
+	mPosition.mY -= 0.05;
 
 	CTransform::Update();	//行列更新
 	return;	//呼び元へ戻す

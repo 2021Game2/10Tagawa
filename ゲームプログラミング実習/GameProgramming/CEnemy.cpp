@@ -59,26 +59,27 @@ void CEnemy::Update() {
 
 
 
-	int i;
-	srand((unsigned)time(NULL)); //乱数の仕組みを初期化
+	//int i;
+	//srand((unsigned)time(NULL)); //乱数の仕組みを初期化
 
-	for (i = 0; i <= 1; i++)	//1回繰り返す
-	{
-		ran = ((rand() % (max - min + 1)) / 4.0 - 0.25)/5; //乱数の生成
+	//for (i = 0; i <= 1; i++)	//1回繰り返す
+	//{
+	//	ran = ((rand() % (max - min + 1)) / 4.0 - 2.0)/10; //乱数の生成
 
-		//mPosition.mY += ran;
-		mPosition.mX += ran;
-		//mPosition.mZ += ran;
+	//	mPosition.mX += ran;
 
-		CEnemy::mMoving = true;
+	//	CEnemy::mMoving = true;
 
-		if (mPosition.mX > 10) {
-			mPosition.mX - 1;
-		}
-	}
+	//}
+	mPosition.mX = -0.5;
 
+	//if (mPosition.mX == -250) {
+	//	mPosition.mX = 250;
+	//}
 	//行列を更新
 	CTransform::Update();
+	return;	//呼び元へ戻す
+
 }
 
 

@@ -38,12 +38,23 @@ CPlayer::CPlayer(CModel* model, CVector position,
 , mHp(HP)
 
 {
+
+	//モデル、位置、回転、拡縮を設定する
+	mpModel = model;	//モデルの設定
+	mPosition = position;	//位置の設定
+	mRotation = rotation;	//回転の設定
+	mScale = scale;	//拡縮の設定
+
+
 	mTag = EPLAYER;	//タグの設定
 	spThis = this;
 	//テクスチャファイルの読み込み（1行64列）
 	mText.LoadTexture("FontWhite.tga", 1, 64);
 
 	mpModel = model;
+
+	CTransform::Update();
+
 }
 
 //更新処理

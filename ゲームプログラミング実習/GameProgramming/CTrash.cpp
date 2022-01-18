@@ -11,6 +11,7 @@
 CTrash::CTrash(CModel* model, CVector position,
 	CVector rotation, CVector scale)
 	: mCollider1(this, &mMatrix, CVector(0.5f, 0.5f, 0.0f), 0.5f)
+	, mCnt(60)
 {
 
 
@@ -27,17 +28,24 @@ CTrash::CTrash(CModel* model, CVector position,
 
 	//mFont.LoadTexture("FontG.png", 1, 4096 / 64);
 
+
+
 }
 
 //更新処理
 void CTrash::Update() {
-	mTag = EENEAT;
+	mTag = EITEM;
 
+	mPosition.mY -= 0.1;
+	if (mPosition.mY < 1) {
+		mPosition.mY = 150;
 
+		//	mCnt -= 1;
+		//if (mCnt == 0) {
+		//	mEnabled;
+		//	}
 
-
-	mPosition.mY -= 0.05;
-
+	}
 	CTransform::Update();	//行列更新
 	return;	//呼び元へ戻す
 

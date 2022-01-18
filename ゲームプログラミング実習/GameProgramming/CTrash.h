@@ -11,6 +11,7 @@ public:
 	//コライダ
 	CCollider mCollider1;
 
+	int mCnt;
 
 
 	//コンストラクタ

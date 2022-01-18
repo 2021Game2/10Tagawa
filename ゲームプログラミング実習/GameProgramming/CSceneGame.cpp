@@ -66,14 +66,14 @@ void CSceneGame::Init()
 	mModel5.Load("resorce\\rock2.obj", "resorce\\rock2.mtl");
 	mModel6.Load("resorce\\rock3.obj", "resorce\\rock3.mtl");
 	mModel7.Load("resorce\\SeaWeed.obj", "resorce\\SeaWeed.mtl");
-	mModel8.Load("resorce\\Submarine.obj", "resorce\\Submarine1.mtl");
+	mModel8.Load("resorce\\Submarine1.obj", "resorce\\Submarine1.mtl");
 
-	new CPlayer(&mModel8, CVector(200, 100, 100), CVector(0, 0, 0), CVector(0.0008, 0.0008, 0.0008));
+	new CPlayer(&mModel8, CVector(0, 10, 0), CVector(0, 0, 0), CVector(0.09, 0.09, 0.09));
 
 
 
 						//(右左 上下 前後ろ)
-	new CEnemy(&mModel, CVector(0, 12, -100), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy(&mModel, CVector(0, 120, -100), CVector(0, 0, 0), CVector(8, 8, 8));
 	new CEnemy(&mModel, CVector(50, 12, -100), CVector(0, 0, 0), CVector(8, 8, 8));
 
 	new CEnemy(&mModel, CVector(80, 4, 80), CVector(0, 0, 0), CVector(8, 8, 8));
@@ -89,44 +89,44 @@ void CSceneGame::Init()
 	new CEnemy(&mModel, CVector(-260, 0, 180), CVector(0, 0, 0), CVector(8, 8, 8));
 
 	new CEnemy(&mModel, CVector(-100, 5, -50), CVector(0, 0, 0), CVector(8, 8, 8));
-	new CEnemy(&mModel, CVector(100, 5, -50), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy(&mModel, CVector(100, 50, -50), CVector(0, 0, 0), CVector(8, 8, 8));
 
-	new CEnemy(&mModel, CVector(80, 4, -100), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy(&mModel, CVector(80, 40, -100), CVector(0, 0, 0), CVector(8, 8, 8));
 	new CEnemy(&mModel, CVector(80, 4, -150), CVector(0, 0, 0), CVector(8, 8, 8));
 
 	new CEnemy(&mModel, CVector(-20, 10, -250), CVector(0, 0, 0), CVector(8, 8, 8));
 	new CEnemy(&mModel, CVector(20, 10, -250), CVector(0, 0, 0), CVector(8, 8, 8));
 
 	//球　上下
-	new CEnemy2(&mModel, CVector(-60, 0, 120), CVector(0, 0, 0), CVector(8, 8, 8));
-	new CEnemy2(&mModel, CVector(60, 10, 120), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(-60, 100, 120), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(60, 100, 120), CVector(0, 0, 0), CVector(8, 8, 8));
 
-	new CEnemy2(&mModel, CVector(0, 5, 65), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(0, 50, 65), CVector(0, 0, 0), CVector(8, 8, 8));
 	new CEnemy2(&mModel, CVector(10, 0, 30), CVector(0, 0, 0), CVector(8, 8, 8));
 
-	new CEnemy2(&mModel, CVector(100, 0, 90), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(100, 200, 90), CVector(0, 0, 0), CVector(8, 8, 8));
 	new CEnemy2(&mModel, CVector(-100, 10, 90), CVector(0, 0, 0), CVector(8, 8, 8));
 
-	new CEnemy2(&mModel, CVector(-150, 8, 20), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(-150, 80, 20), CVector(0, 0, 0), CVector(8, 8, 8));
 	new CEnemy2(&mModel, CVector(-15, 8, 20), CVector(0, 0, 0), CVector(8, 8, 8));
 
-	new CEnemy2(&mModel, CVector(-10, 10, 120), CVector(0, 0, 0), CVector(8, 8, 8));
-	new CEnemy2(&mModel, CVector(10, 1, 12), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(-10, 100, 120), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(10, 10, 12), CVector(0, 0, 0), CVector(8, 8, 8));
 
-	new CEnemy2(&mModel, CVector(10, 5, 250), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(10, 50, 250), CVector(0, 0, 0), CVector(8, 8, 8));
 	new CEnemy2(&mModel, CVector(10, 12, 250), CVector(0, 0, 0), CVector(8, 8, 8));
 
-	new CEnemy2(&mModel, CVector(200, 5, 110), CVector(0, 0, 0), CVector(8, 8, 8));
-	new CEnemy2(&mModel, CVector(20, 5, 11), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(200, 150, 110), CVector(0, 0, 0), CVector(8, 8, 8));
+	new CEnemy2(&mModel, CVector(20, 50, 11), CVector(0, 0, 0), CVector(8, 8, 8));
 
 
 
 
 	//ゴミ袋
-	new CTrash(&mModel3, CVector(0,100, 0), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CTrash(&mModel3, CVector(50, 100, 0), CVector(0, 0, 0), CVector(3, 3, 3));
-	new CTrash(&mModel3, CVector(100, 100, 0), CVector(0, 0, 0), CVector(1, 1, 1));
-	new CTrash(&mModel3, CVector(150, 100, 0), CVector(0, 0, 0), CVector(5, 5, 5));
+	new CTrash(&mModel3, CVector(0,100, 50), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CTrash(&mModel3, CVector(50, 50, 0), CVector(0, 0, 0), CVector(3, 3, 3));
+	new CTrash(&mModel3, CVector(100, 120, 100), CVector(0, 0, 0), CVector(1, 1, 1));
+	new CTrash(&mModel3, CVector(150, 10, -30), CVector(0, 0, 0), CVector(5, 5, 5));
 
 	
 	new CRock4(&mModel4, CVector(0, 3, 0), CVector(0, 0, 0), CVector(5, 5, 5));
@@ -136,7 +136,7 @@ void CSceneGame::Init()
 	new CRock4(&mModel4, CVector(200, 3, 0), CVector(0, 0, 0), CVector(5, 5, 5));
 
 
-	new CRock5(&mModel5, CVector(50, 1, 70), CVector(0, 0, 0), CVector(3, 3, 3));
+	new CRock5(&mModel5, CVector(50, 10, 70), CVector(0, 0, 0), CVector(3, 3, 3));
 	new CSeaweed(&mModel7, CVector(50, 4, 70), CVector(0, 0, 0), CVector(2, 2, 2));
 
 	new CRock5(&mModel5, CVector(50, 0, 50), CVector(0, 0, 0), CVector(5, 5, 5));

@@ -20,14 +20,16 @@ public:
 	CMap mMap;
 
 
-	CModel mModel;
-	CModel mModel2;
-	CModel mModel3;
-	CModel mModel4;
-	CModel mModel5;
-	CModel mModel6;
-	CModel mModel7;
-	CModel mModel8;
+	CModel mModel;	//sphere
+	CModel mModel2;	//sea
+	CModel mModel3;	//trash
+	CModel mModel4;	//rock1
+	CModel mModel5;	//rock2
+	CModel mModel6;	//rock3
+	CModel mModel7;	//SeaWeed
+	CModel mModel8;	//Submarine1
+	CModel mModel9;	//trash2
+
 
 	CColliderTriangle mColliderTriangle;
 

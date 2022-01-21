@@ -1,7 +1,7 @@
 #include "CTrash.h"
 #include "CCollisionManager.h"
-#include "CScore.h"
 #include "CSceneGame.h"
+#include "CScore.h"
 
 
 #define SCORE 100			//スコア
@@ -10,7 +10,7 @@
 //CTrash(モデル, 位置, 回転, 拡縮)
 CTrash::CTrash(CModel* model, CVector position,
 	CVector rotation, CVector scale)
-	: mCollider1(this, &mMatrix, CVector(0.5f, 0.5f, 0.0f), 0.5f)
+	: mCollider1(this, &mMatrix, CVector(0.5f, 0.5f, 0.0f), 1.5f)
 	, mCnt(60)
 {
 
@@ -70,10 +70,17 @@ void CTrash::Collision(CCollider* m, CCollider* o) {
 		if (o->mType == CCollider::ESPHERE) {
 			if (CCollider::Collision(m, o))
 			{
-				CScore::mScore += SCORE;
-				
+				mPosition = mPosition + adjust;
+
+				if (o->mpParent->mTag == EPLAYER) {
+					CScore::mScore += SCORE;
+					mPosition.mY = 150;
+
+				}
 			}
 		}
+
+
 		//相手のコライダが三角コライダの時
 		else if (o->mType == CCollider::ETRIANGLE) {
 			CVector adjust;//調整用ベクトル

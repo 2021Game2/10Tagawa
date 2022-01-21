@@ -141,6 +141,7 @@
     <ClCompile Include="CXPlayer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CRock5.cpp" />
+    <ClCompile Include="CTrash2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CBillBoard.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="CTexture.h" />
     <ClInclude Include="CTransform.h" />
     <ClInclude Include="CTrash.h" />
+    <ClInclude Include="CTrash2.h" />
     <ClInclude Include="CTreasure.h" />
     <ClInclude Include="CTriangle.h" />
     <ClInclude Include="CUtil.h" />

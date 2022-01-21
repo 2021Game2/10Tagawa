@@ -1,3 +1,4 @@
 ﻿  CSceneGame.cpp
-C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CSceneGame.cpp(171,7): warning C4101: 'buf': ローカル変数は 1 度も使われていません。
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CSceneGame.cpp(196,7): warning C4101: 'buf': ローカル変数は 1 度も使われていません。
+  LINK : 前回のインクリメンタル リンクで C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\Debug\GameProgramming.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
   GameProgramming.vcxproj -> C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\Debug\GameProgramming.exe

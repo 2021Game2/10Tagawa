@@ -20,6 +20,7 @@
 #include "CCamera.h"
 
 
+
 CPlayer *CPlayer::spThis = 0;
 
 #define _USE_MATH_DEFINES
@@ -27,13 +28,13 @@ CPlayer *CPlayer::spThis = 0;
 
 #include "CEffect.h"
 #define G -0.5	//重力
-#define HP 10	//HP
+#define HP 100	//HP
 #define INITIALIZE 0	//初期化
 
 
 CPlayer::CPlayer(CModel* model, CVector position,
 	CVector rotation, CVector scale)
-: mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
+: mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 6.0f)
 , mCount(0)
 , mHp(HP)
 
@@ -177,10 +178,6 @@ void CPlayer::Collision(CCollider *m, CCollider *o) {
 				if (o->mpParent->mTag == EROCK) {
 					mPosition = mPosition + adjust;
 				}
-				if (o->mpParent->mTag == EENEMY) {
-					mPosition = mPosition + adjust;
-				}
-
 			}
 		}
 		//相手のコライダが三角コライダの時

@@ -20,8 +20,8 @@ CEnemy::CEnemy(CModel *model, CVector position,
 , mHp(HP)
 , mAttack(false)
 ,mCnt(30)
-, max(2)
-, min(0)
+//, max(2)
+//, min(0)
 {
 	sCount++;
 
@@ -44,6 +44,12 @@ CEnemy::CEnemy(CModel *model, CVector position,
 
 //更新処理
 void CEnemy::Update() {
+
+	mPosition.mX -= 0.4;
+
+	if (mPosition.mX < -200) {
+		mPosition.mX = 200;
+	}
 
 	//HPが0以下の時　撃破
 	if (mHp = 0)
@@ -71,11 +77,9 @@ void CEnemy::Update() {
 	//	CEnemy::mMoving = true;
 
 	//}
-	mPosition.mX = -0.5;
 
-	//if (mPosition.mX == -250) {
-	//	mPosition.mX = 250;
-	//}
+	 
+	 
 	//行列を更新
 	CTransform::Update();
 	return;	//呼び元へ戻す

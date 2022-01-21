@@ -21,8 +21,8 @@ CEnemy2::CEnemy2(CModel* model, CVector position,
 	, mHp(HP)
 	, mAttack(false)
 	, mCnt(20)
-	, max(2)
-	, min(0)
+	//, max(2)
+	//, min(0)
 {
 	sCount++;
 
@@ -76,8 +76,8 @@ void CEnemy2::Update() {
 		//}
 
 		mPosition.mX -= 0.4;
-		if (mPosition.mX == -150) {
-			mPosition.mX = 150;
+		if (mPosition.mX < -200) {
+			mPosition.mX = 200;
 		}
 
 	//s—ñ‚ðXV

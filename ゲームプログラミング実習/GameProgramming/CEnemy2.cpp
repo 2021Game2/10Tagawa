@@ -114,7 +114,8 @@ void CEnemy2::Collision(CCollider* m, CCollider* o) {
 					//	mCnt = 30;
 					//}
 					//return;
-					mEnabled = false;
+					//mEnabled = false;
+						CTaskManager::Get()->Delete();
 				}
 				if (o->mpParent->mTag == EROCK) {
 					mPosition = mPosition + adjust;

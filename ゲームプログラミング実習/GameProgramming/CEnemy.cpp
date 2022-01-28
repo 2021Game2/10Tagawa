@@ -52,7 +52,7 @@ void CEnemy::Update() {
 	}
 
 	//HPが0以下の時　撃破
-	if (mHp = 0)
+	if (mHp == 0)
 	{
 
 			//エフェクト生成
@@ -113,7 +113,8 @@ void CEnemy::Collision(CCollider* m, CCollider* o) {
 					//	mCnt = 30;
 					//}
 					//return;
-					mEnabled = false;
+					//mEnabled = false;
+					CTaskManager::Get()->Delete();
 				}
 				if (o->mpParent->mTag == EROCK) {
 					mPosition = mPosition + adjust;

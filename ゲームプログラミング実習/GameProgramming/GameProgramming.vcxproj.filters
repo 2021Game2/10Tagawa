@@ -177,6 +177,9 @@
     <ClCompile Include="CTrash2.cpp">
       <Filter>ソース ファイル\Base</Filter>
     </ClCompile>
+    <ClCompile Include="CSceneTitle.cpp">
+      <Filter>ソース ファイル\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -333,6 +336,9 @@
       <Filter>ソース ファイル\Lib</Filter>
     </ClInclude>
     <ClInclude Include="CTrash2.h">
+      <Filter>ソース ファイル\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneTitle.h">
       <Filter>ソース ファイル\Base</Filter>
     </ClInclude>
   </ItemGroup>

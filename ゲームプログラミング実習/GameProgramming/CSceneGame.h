@@ -33,7 +33,8 @@ public:
 
 	CColliderTriangle mColliderTriangle;
 
-
+	//Ÿ‚ÌƒV[ƒ“‚Ìæ“¾
+	EScene GetNextScene();
 
 	char buf[10];
 

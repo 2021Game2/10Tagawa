@@ -49,8 +49,17 @@ CSceneGame::~CSceneGame()
 
 }
 
+
+CScene::EScene CSceneGame::GetNextScene() {
+	return mScene;
+}
+
+
 void CSceneGame::Init()
 {
+	//ÉVÅ[ÉìÇÃê›íË
+	mScene = EGAME;
+
 	mJump.Load("jump.wav");
 
 //	mBillBoard.Set(CVector(0.0f, 5.0f, 0.0f), 1.0f, 1.0f);
@@ -59,6 +68,11 @@ void CSceneGame::Init()
 	mFont.LoadTexture("FontG.png", 1, 4096 / 64);
 
 	CRes::sModelX.Load(MODEL_FILE);
+
+	mColliderTriangle.Set(NULL, NULL
+		, CVector(-200.0f, 0.0f, -200.0f)
+		, CVector(-200.0f, 0.0f, 200.0f)
+		, CVector(200.0f, 0.0f, -200.0f));
 
 
 

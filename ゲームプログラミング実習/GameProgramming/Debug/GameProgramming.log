@@ -1,4 +1,5 @@
-﻿  CSceneGame.cpp
-C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\GameProgramming\CSceneGame.cpp(196,7): warning C4101: 'buf': ローカル変数は 1 度も使われていません。
-  LINK : 前回のインクリメンタル リンクで C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\Debug\GameProgramming.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
-  GameProgramming.vcxproj -> C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\Debug\GameProgramming.exe
+﻿  CSceneManager.cpp
+  CSceneTitle.cpp
+  コードを生成中...
+CSceneTitle.obj : error LNK2001: 外部シンボル "public: virtual void __thiscall CSceneTitle::Render(void)" (?Render@CSceneTitle@@UAEXXZ) は未解決です
+C:\Users\himaw\OneDrive\デスクトップ\GitHub\10Tagawa\ゲームプログラミング実習\Debug\GameProgramming.exe : fatal error LNK1120: 1 件の未解決の外部参照

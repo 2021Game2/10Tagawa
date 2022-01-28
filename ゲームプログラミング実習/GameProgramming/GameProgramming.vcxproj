@@ -121,6 +121,7 @@
     <ClCompile Include="CRock6.cpp" />
     <ClCompile Include="CSceneGame.cpp" />
     <ClCompile Include="CSceneManager.cpp" />
+    <ClCompile Include="CSceneTitle.cpp" />
     <ClCompile Include="CScore.cpp" />
     <ClCompile Include="Csea.cpp" />
     <ClCompile Include="CSeaweed.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CSceneGame.h" />
     <ClInclude Include="CSceneManager.h" />
+    <ClInclude Include="CSceneTitle.h" />
     <ClInclude Include="CScore.h" />
     <ClInclude Include="CSea.h" />
     <ClInclude Include="CSeaweed.h" />
